@@ -1,10 +1,5 @@
 ﻿using AdminService.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
 
 namespace AdminService.DbContexts
 {
@@ -12,7 +7,6 @@ namespace AdminService.DbContexts
     {
         public AppDbContext() : base("name=DefaultConnection") { }
 
-        public DbSet<Admin> Admin { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
