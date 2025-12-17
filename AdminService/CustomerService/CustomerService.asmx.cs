@@ -1,115 +1,190 @@
-﻿using CustomerService;
-using CustomerService.DbContexts;
+﻿using CustomerService.DbContexts;
 using CustomerService.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Linq.Expressions;
 using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace CustomerService
 {
-    /// <summary>
-    /// Summary description for CustomerService
-    /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    [System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
-    public class CustomerService : System.Web.Services.WebService
+    [ScriptService]
+    public class CustomerService : WebService
     {
-
         private readonly AppDbContext dbContext = new AppDbContext();
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public ServiceResponse<bool> LogIn(string email, string password)
         {
-            bool result = false;
-            var users = dbContext.Customer.ToList();
-            foreach (Customer user in users)
+            var customer = dbContext.Customer.FirstOrDefault(c => c.Email == email && c.Password == password);
+
+            if (customer == null)
             {
-                if (user.Email == email)
+                return new ServiceResponse<bool>
                 {
-                    result = true;
-                    break;
-                }
-                else { result = false; }
+                    Success = false,
+                    Message = "Invalid email or password"
+                };
             }
-             return new ServiceResponse<bool> { Success = result, Data = result };
+
+            return new ServiceResponse<bool>
+            {
+                Success = true,
+                Message = "Login successful"
+            };
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<Customer> GetCustomer(int id)
+        {
+            return GetById(dbContext.Customer, id);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<List<Customer>> GetCustomer()
+        {
+            return GetAll(dbContext.Customer);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<Customer> AddCustomer(Customer customer)
+        {
+            return AddEntity(customer, dbContext.Customer);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<Customer> EditCustomer(Customer customer)
+        {
+            return EditEntity(customer, dbContext.Customer, c => c.Id);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<Customer> DeleteCustomer(int id)
+        {
+            return DeleteEntity(dbContext.Customer, c => c.Id == id);
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public ServiceResponse<Order> GetOrder(int id)
         {
-            var product = dbContext.Order.Find(id);
-
-            if (product == null)
-                return new ServiceResponse<Order> { Success = false, Message = "Order Not Found" };
-
-            return new ServiceResponse<Order> { Success = true, Message = "Order Found", Data = product };
+            return GetById(dbContext.Order, id);
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public ServiceResponse<List<Order>> GetOrders()
+        public ServiceResponse<List<Order>> GetOrders(int customerId)
         {
-            return new ServiceResponse<List<Order>> { Success = true, Data = dbContext.Order.ToList() };
+            return GetAll(dbContext.Order, o => o.CustomerId == customerId);
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public ServiceResponse<Order> AddOrder(Order order)
         {
-            if (order == null) return new ServiceResponse<Order> { Success = false, Message = "Invalid order data" };
-
-            var results = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
-                order,
-                new ValidationContext(order),
-                results,
-                validateAllProperties: true
-            );
-
-            if (!isValid)
-            {
-                return new ServiceResponse<Order>
-                {
-                    Success = false,
-                    Message = "Validation Failed",
-                    Errors = results.Select(r => r.ErrorMessage).ToList()
-                };
-            }
-
-            dbContext.Order.Add(order);
-            dbContext.SaveChanges();
-
-            return new ServiceResponse<Order> { Success = true, Message = "Product Added", Data = order };
+            return AddEntity(order, dbContext.Order);
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public ServiceResponse<Order> EditOrder(Order order)
+        public ServiceResponse<Order> DeleteOrder(int id)
         {
-            if (order == null) return new ServiceResponse<Order> { Success = false, Message = "Invalid order data" };
+            return DeleteEntity(dbContext.Order, o => o.Id == id);
+        }
+
+        private ServiceResponse<T> GetById<T>(DbSet<T> dbSet, int id) where T : class
+        {
+            try
+            {
+                var entity = dbSet.Find(id);
+
+                if (entity == null)
+                {
+                    return new ServiceResponse<T>
+                    {
+                        Success = false,
+                        Message = $"{typeof(T).Name} not found"
+                    };
+                }
+
+                return new ServiceResponse<T>
+                {
+                    Success = true,
+                    Message = $"{typeof(T).Name} found",
+                    Data = entity
+                };
+            }
+            catch (Exception)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = "An unexpected error occurred"
+                };
+            }
+        }
+
+        private ServiceResponse<List<T>> GetAll<T>(DbSet<T> dbSet, Expression<Func<T, bool>> filter = null) where T : class
+        {
+            try
+            {
+                IQueryable<T> query = dbSet;
+
+                if (filter != null) query = query.Where(filter);
+
+                var entities = query.ToList();
+
+                return new ServiceResponse<List<T>>
+                {
+                    Success = true,
+                    Message = $"{typeof(T).Name}s loaded",
+                    Data = entities
+                };
+            }
+            catch (Exception)
+            {
+                return new ServiceResponse<List<T>>
+                {
+                    Success = false,
+                    Message = $"Failed to load {typeof(T).Name}s"
+                };
+            }
+        }
+
+        private ServiceResponse<T> AddEntity<T>(T entity, DbSet<T> dbSet) where T : class
+        {
+            if (entity == null)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = $"Invalid {typeof(T).Name} data"
+                };
+            }
 
             var results = new List<ValidationResult>();
 
             bool isValid = Validator.TryValidateObject(
-                order,
-                new ValidationContext(order),
+                entity,
+                new ValidationContext(entity),
                 results,
                 validateAllProperties: true
             );
 
             if (!isValid)
             {
-                return new ServiceResponse<Order>
+                return new ServiceResponse<T>
                 {
                     Success = false,
                     Message = "Validation Failed",
@@ -117,29 +192,124 @@ namespace CustomerService
                 };
             }
 
-            var existingProduct = dbContext.Order.Find(order.Id);
+            try
+            {
+                dbSet.Add(entity);
+                dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = $"Failed to add {typeof(T).Name}"
+                };
+            }
 
-            if (existingProduct == null) return new ServiceResponse<Order> { Success = false, Message = "Product not found" };
-
-            existingProduct = order;
-
-            dbContext.SaveChanges();
-
-            return new ServiceResponse<Order> { Success = true, Message = "Product Updated", Data = existingProduct };
+            return new ServiceResponse<T>
+            {
+                Success = true,
+                Message = $"{typeof(T).Name} added successfully",
+            };
         }
 
-        //[WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        //public ServiceResponse<bool> DeleteProduct(int id)
-        //{
-        //    var order = dbContext.Product.Find(id);
+        private ServiceResponse<T> EditEntity<T>(T entity, DbSet<T> dbSet, Func<T, object> keySelector) where T : class
+        {
+            if (entity == null)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = $"Invalid {typeof(T).Name} data"
+                };
+            }
 
-        //    if (order == null) return new ServiceResponse<bool> { Success = false, Message = "Product not found" };
+            var results = new List<ValidationResult>();
 
-        //    dbContext.Product.Remove(order);
-        //    dbContext.SaveChanges();
+            bool isValid = Validator.TryValidateObject(
+                entity,
+                new ValidationContext(entity),
+                results,
+                true
+            );
 
-        //    return new ServiceResponse<bool> { Success = true, Message = "Product deleted successfully" };
-        //}
+            if (!isValid)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = "Validation Failed",
+                    Errors = results.Select(r => r.ErrorMessage).ToList()
+                };
+            }
+
+            var key = keySelector(entity);
+
+            var existingEntity = dbSet.Find(key);
+
+            if (existingEntity == null)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = $"{typeof(T).Name} not found"
+                };
+            }
+
+            try
+            {
+                dbSet.Attach(entity);
+                dbContext.Entry(entity).State = EntityState.Modified;
+                dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = $"Failed to update {typeof(T).Name}"
+                };
+            }
+
+            return new ServiceResponse<T>
+            {
+                Success = true,
+                Message = $"{typeof(T).Name} updated successfully"
+            };
+        }
+
+        private ServiceResponse<T> DeleteEntity<T>(DbSet<T> dbSet, Expression<Func<T, bool>> predicate) where T : class
+        {
+            var entity = dbSet.FirstOrDefault(predicate);
+
+            if (entity == null)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = $"{typeof(T).Name} not found"
+                };
+            }
+
+            try
+            {
+                dbSet.Remove(entity);
+                dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return new ServiceResponse<T>
+                {
+                    Success = false,
+                    Message = $"Failed to delete {typeof(T).Name}"
+                };
+            }
+
+            return new ServiceResponse<T>
+            {
+                Success = true,
+                Message = $"{typeof(T).Name} deleted successfully"
+            };
+        }
     }
 }
