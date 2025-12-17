@@ -1,0 +1,37 @@
+﻿CREATE TABLE Customer (
+    Id INT IDENTITY(1, 1) PRIMARY KEY,
+    Username NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(200) UNIQUE NOT NULL,
+    Password NVARCHAR(200) UNIQUE NOT NULL,
+    Phone_Number NVARCHAR(20),
+    Address NVARCHAR(MAX) NOT NULL
+);
+
+CREATE TABLE Product (
+    Id INT IDENTITY(1, 1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Description NVARCHAR(MAX),
+    Count_Available INT NOT NULL,
+    Category NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE [Order] (
+    Id INT IDENTITY(1, 1) PRIMARY KEY,
+    Date DATETIME NOT NULL,
+    Status NVARCHAR(50) NOT NULL,
+    Product_Count INT NOT NULL,
+    Product_Price DECIMAL(10, 2) NOT NULL,
+    Customer_Id INT NOT NULL,
+    Product_Id INT NOT NULL,
+
+
+    FOREIGN KEY (Customer_Id) REFERENCES Customer(Id),
+    FOREIGN KEY (Product_Id) REFERENCES Product(Id)
+);
+
+CREATE TABLE FAQ (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Question NVARCHAR(MAX),
+    Answer NVARCHAR(MAX)
+);
