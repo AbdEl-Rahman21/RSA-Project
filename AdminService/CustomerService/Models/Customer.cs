@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace AdminService.Models
+namespace CustomerService.Models
 {
     public class Customer
     {
@@ -26,7 +26,6 @@ namespace AdminService.Models
         [Required]
         public string Address { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }

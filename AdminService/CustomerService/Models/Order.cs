@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace AdminService.Models
+namespace CustomerService.Models
 {
     public class Order
     {
@@ -15,9 +14,16 @@ namespace AdminService.Models
         [Required]
         public string Status { get; set; }
 
+        [Required]
+        public int ProductCount { get; set; }
+
+        [Required]
+        public decimal ProductPrice { get; set; }
+
         public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
 
-        public virtual ICollection<OrderProduct> OrderProducts { get; set; }
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
