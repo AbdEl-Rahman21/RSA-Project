@@ -259,8 +259,7 @@ namespace AdminService
 
             try
             {
-                dbSet.Attach(entity);
-                dbContext.Entry(entity).State = EntityState.Modified;
+                dbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
                 dbContext.SaveChanges();
             }
             catch (Exception)

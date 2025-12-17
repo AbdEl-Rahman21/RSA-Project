@@ -6,7 +6,11 @@ namespace CustomerService.DbContexts
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext() : base(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=RSA;Integrated Security=True") { }
+        public AppDbContext() : base(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=RSA;Integrated Security=True")
+        {
+            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+        }
 
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Product> Product { get; set; }
