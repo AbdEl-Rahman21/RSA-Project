@@ -1,36 +1,28 @@
-﻿
-using ElectronicsStoreMVC.AdminReference;
-using ElectronicsStoreMVC.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Services.Description;
 using ElectronicsStoreMVC.CustomerReference;
 
 namespace ElectronicsStoreMVC.Controllers
 {
     public class CustomersController : Controller
     {
-
-
         // GET: Customers
         public ActionResult Index()
         {
-            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
-            CustomerReference.ServiceResponseOfListOfCustomer allCustomers = service.GetCustomers();
+            CustomerServiceSoapClient service = new CustomerServiceSoapClient();
+
+            ServiceResponseOfListOfCustomer allCustomers = service.GetCustomers();
+
             List<Models.Customer> customerList = new List<Models.Customer>();
 
-            foreach (CustomerReference.Customer custFromService in allCustomers.Data)
+            foreach (Customer custFromService in allCustomers.Data)
             {
                 var serviceCustomer = new Models.Customer(custFromService);
-                customerList.Add(serviceCustomer);
 
+                customerList.Add(serviceCustomer);
             }
+
             return View(customerList);
         }
 
@@ -41,17 +33,18 @@ namespace ElectronicsStoreMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+
+            CustomerServiceSoapClient service = new CustomerServiceSoapClient();
+
             ServiceResponseOfCustomer serviceFaq = service.GetCustomer((int)id);
-           
-
-
 
             var customer = new Models.Customer(serviceFaq);
+
             if (customer == null)
             {
                 return HttpNotFound();
             }
+
             return View(customer);
         }
 
@@ -62,26 +55,25 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // POST: Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Username,Email,Password,PhoneNumber,Address")] Models.Customer customer)
         {
             if (ModelState.IsValid)
             {
-                var serviceCust = new CustomerReference.Customer
+                var serviceCust = new Customer
                 {
                     Username = customer.Username,
                     Email = customer.Email,
                     Password = customer.Password,
                     PhoneNumber = customer.PhoneNumber,
                     Address = customer.Address
-                    
-
                 };
-                CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+
+                CustomerServiceSoapClient service = new CustomerServiceSoapClient();
+
                 service.AddCustomer(serviceCust);
+
                 return RedirectToAction("Index");
             }
 
@@ -95,26 +87,29 @@ namespace ElectronicsStoreMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+
+            CustomerServiceSoapClient service = new CustomerServiceSoapClient();
+
             var serviceCust = service.GetCustomer((int)id);
+
             var customer = new Models.Customer(serviceCust);
+
             if (customer == null)
             {
                 return HttpNotFound();
             }
+
             return View(customer);
         }
 
         // POST: Customers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Username,Email,Password,PhoneNumber,Address")] Models.Customer customer)
         {
             if (ModelState.IsValid)
             {
-                var serviceCust = new CustomerReference.Customer
+                var serviceCust = new Customer
                 {
                     Id = customer.Id,
                     Username = customer.Username,
@@ -122,12 +117,15 @@ namespace ElectronicsStoreMVC.Controllers
                     Password = customer.Password,
                     PhoneNumber = customer.PhoneNumber,
                     Address = customer.Address
-
                 };
-                CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+
+                CustomerServiceSoapClient service = new CustomerServiceSoapClient();
+
                 service.EditCustomer(serviceCust);
+
                 return RedirectToAction("Index");
             }
+
             return View(customer);
         }
 
@@ -138,13 +136,18 @@ namespace ElectronicsStoreMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+
+            CustomerServiceSoapClient service = new CustomerServiceSoapClient();
+
             var serviceCust = service.GetCustomer((int)id);
+
             var customer = new Models.Customer(serviceCust);
+
             if (customer == null)
             {
                 return HttpNotFound();
             }
+
             return View(customer);
         }
 
@@ -153,12 +156,11 @@ namespace ElectronicsStoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+            CustomerServiceSoapClient service = new CustomerServiceSoapClient();
 
             service.DeleteCustomer(id);
+
             return RedirectToAction("Index");
         }
-
-        
     }
 }

@@ -1,5 +1,4 @@
-﻿using ElectronicsStoreMVC.AdminReference;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ElectronicsStoreMVC.Models
@@ -48,9 +47,7 @@ namespace ElectronicsStoreMVC.Models
             PhoneNumber = serviceCustomer.Data.PhoneNumber;
             Address = serviceCustomer.Data.Address; 
         }
-        public Customer()
-        {
 
-        }
+        public Customer() { }
     }
 }
