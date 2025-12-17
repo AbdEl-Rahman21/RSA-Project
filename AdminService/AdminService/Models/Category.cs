@@ -12,6 +12,6 @@ namespace AdminService.Models
         [MaxLength(100)]
         public string Name { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace AdminService.Models
         public string Name { get; set; }
 
         [Required]
-        [Range(1, 99999999.99)]
+        [Range(0.01, 99999999.99)]
         public decimal Price { get; set; }
 
         public string Description { get; set; }
@@ -24,7 +24,6 @@ namespace AdminService.Models
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<CartProduct> CartProducts { get; set; }
-        public virtual ICollection<OrderProduct> OrderProducts { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }
