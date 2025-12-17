@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Script.Services;
 using System.Web.Services;
@@ -405,19 +407,19 @@ namespace AdminService
 
             try
             {
-                using (var smtp = new System.Net.Mail.SmtpClient())
+                using (var smtp = new SmtpClient())
                 {
                     smtp.Host = "smtp.office365.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
-                    smtp.Credentials = new System.Net.NetworkCredential(
+                    smtp.Credentials = new NetworkCredential(
                         "2022170928@cis.asu.edu.eg",
                         "Coj40431"
                     );
 
-                    var mail = new System.Net.Mail.MailMessage
+                    var mail = new MailMessage
                     {
-                        From = new System.Net.Mail.MailAddress("2022170928@cis.asu.edu.eg", "Electronic Store")
+                        From = new MailAddress("2022170928@cis.asu.edu.eg", "Electronic Store")
                     };
 
                     mail.To.Add(email);
