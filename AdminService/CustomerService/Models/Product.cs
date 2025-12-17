@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace AdminService.Models
+namespace CustomerService.Models
 {
     public class Product
     {
@@ -13,7 +13,7 @@ namespace AdminService.Models
         public string Name { get; set; }
 
         [Required]
-        [Range(1, 99999999.99)]
+        [Range(0.01, 99999999.99)]
         public decimal Price { get; set; }
 
         public string Description { get; set; }
@@ -21,10 +21,10 @@ namespace AdminService.Models
         [Required]
         public int CountAvailable { get; set; }
 
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Category { get; set; }
 
-        public virtual ICollection<CartProduct> CartProducts { get; set; }
-        public virtual ICollection<OrderProduct> OrderProducts { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }
