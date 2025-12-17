@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using System.Web.Script.Services;
 using System.Web.Services;
 
@@ -63,7 +64,35 @@ namespace AdminService
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public ServiceResponse<Product> EditProduct(Product product)
         {
-            return EditEntity(product, dbContext.Product, p => p.Id);
+            return EditEntity(
+                product,
+                dbContext.Product,
+                p => p.Id,
+                (existing, updated) =>
+                {
+                    if (existing.Price != updated.Price)
+                    {
+                        string message = $"Price for product '{updated.Name}' changed from {existing.Price:C} to {updated.Price:C}.";
+
+                        Task.Run(() =>
+                        {
+                            try
+                            {
+                                var customers = dbContext.Customer.ToList();
+
+                                foreach (var customer in customers)
+                                {
+                                    SendNotification(customer.Id, customer.Email, message, "Price Change");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"Notification error: {ex.Message}");
+                            }
+                        });
+                    }
+                }
+            );
         }
 
         [WebMethod]
@@ -106,6 +135,56 @@ namespace AdminService
         public ServiceResponse<FAQ> DeleteFAQ(int id)
         {
             return DeleteEntity(dbContext.FAQ, f => f.Id == id);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<Order> ChangeOrderStatus(int orderId, string newStatus)
+        {
+            var order = dbContext.Order.Find(orderId);
+
+            if (order == null)
+            {
+                return new ServiceResponse<Order>
+                {
+                    Success = false,
+                    Message = "Order not found"
+                };
+            }
+
+            if (!new[] { "Processing", "Shipped", "Delivered", "Cancelled" }.Contains(newStatus))
+            {
+                return new ServiceResponse<Order>
+                {
+                    Success = false,
+                    Message = "Invaild status"
+                };
+            }
+
+            string message = $"Order '{order.Id}' changed from {order.Status} to {newStatus}.";
+
+            try
+            {
+                order.Status = newStatus;
+
+                dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return new ServiceResponse<Order>
+                {
+                    Success = false,
+                    Message = "Failed to update Order"
+                };
+            }
+
+            SendNotification(order.CustomerId, order.Customer.Email, message, "Order Status Update");
+
+            return new ServiceResponse<Order>
+            {
+                Success = true,
+                Message = "Order updated successfully"
+            };
         }
 
         private ServiceResponse<T> GetById<T>(DbSet<T> dbSet, int id) where T : class
@@ -214,7 +293,7 @@ namespace AdminService
             };
         }
 
-        private ServiceResponse<T> EditEntity<T>(T entity, DbSet<T> dbSet, Func<T, object> keySelector) where T : class
+        private ServiceResponse<T> EditEntity<T>(T entity, DbSet<T> dbSet, Func<T, object> keySelector, Action<T, T> postUpdateAction = null) where T : class
         {
             if (entity == null)
             {
@@ -259,6 +338,8 @@ namespace AdminService
 
             try
             {
+                postUpdateAction?.Invoke(existingEntity, entity);
+
                 dbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
                 dbContext.SaveChanges();
             }
@@ -310,6 +391,46 @@ namespace AdminService
                 Success = true,
                 Message = $"{typeof(T).Name} deleted successfully"
             };
+        }
+
+        private void SendNotification(int customerId, string email, string message, string subject)
+        {
+            var notification = new Notification
+            {
+                Message = message,
+                CustomerId = customerId,
+            };
+
+            AddEntity(notification, dbContext.Notification);
+
+            try
+            {
+                using (var smtp = new System.Net.Mail.SmtpClient())
+                {
+                    smtp.Host = "smtp.office365.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.Credentials = new System.Net.NetworkCredential(
+                        "2022170928@cis.asu.edu.eg",
+                        "Coj40431"
+                    );
+
+                    var mail = new System.Net.Mail.MailMessage
+                    {
+                        From = new System.Net.Mail.MailAddress("2022170928@cis.asu.edu.eg", "Electronic Store")
+                    };
+
+                    mail.To.Add(email);
+                    mail.Subject = subject;
+                    mail.Body = message;
+
+                    smtp.Send(mail);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send email to {email}: {ex.Message}");
+            }
         }
     }
 }

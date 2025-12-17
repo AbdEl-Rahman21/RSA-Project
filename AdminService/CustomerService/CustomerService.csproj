@@ -85,6 +85,7 @@
     <Compile Include="DbContexts\AppDbContext.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\FAQ.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

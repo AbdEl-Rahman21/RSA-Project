@@ -1,5 +1,4 @@
 ﻿using CustomerService.Models;
-using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace CustomerService.DbContexts
@@ -16,5 +15,6 @@ namespace CustomerService.DbContexts
         public DbSet<Product> Product { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<FAQ> FAQ { get; set; }
+        public DbSet<Notification> Notification { get; set; }
     }
 }

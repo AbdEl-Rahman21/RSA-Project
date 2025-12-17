@@ -15,5 +15,6 @@ namespace AdminService.DbContexts
         public DbSet<Product> Product { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<FAQ> FAQ { get; set; }
+        public DbSet<Notification> Notification { get; set; }
     }
 }
