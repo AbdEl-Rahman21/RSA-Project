@@ -1,4 +1,8 @@
 <Solution>
   <Project Path="AdminService/AdminService.csproj" Id="a34bd924-92d4-4e7d-b9cd-caf97655382b" />
   <Project Path="CustomerService/CustomerService.csproj" Id="c54cb52b-8b80-40c4-807c-814b77ec6af1" />
+  <Project Path="ElectronicsStoreMVC/ElectronicsStoreMVC.csproj" Id="4da9b555-b66f-477c-a4a5-a36b9a45c28d">
+    <BuildDependency Project="AdminService/AdminService.csproj" />
+    <BuildDependency Project="CustomerService/CustomerService.csproj" />
+  </Project>
 </Solution>
