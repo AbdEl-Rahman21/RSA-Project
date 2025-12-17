@@ -5,7 +5,7 @@ namespace AdminService.DbContexts
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext() : base("name=DefaultConnection") { }
+        public AppDbContext() : base(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=RSA;Integrated Security=True") { }
 
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Product> Product { get; set; }
