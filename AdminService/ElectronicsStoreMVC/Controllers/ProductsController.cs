@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CustomerService.DbContexts;
 using ElectronicsStoreMVC.Models;
+using ElectronicsStoreMVC.AdminReference;
 
 namespace ElectronicsStoreMVC.Controllers
 {
@@ -18,9 +19,26 @@ namespace ElectronicsStoreMVC.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
-            var allProducts = service.GetProducts();
-            return View(allProducts);
+            AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
+            ServiceResponseOfListOfProduct allProducts = service.GetProducts();
+            List<Models.Product> products = new List<Models.Product>();
+
+            foreach (AdminReference.Product prodFromService in allProducts.Data)
+            {
+                var serviceProduct = new Models.Product
+                {
+                    Id= prodFromService.Id,
+                    Name = prodFromService.Name,
+                    Price = prodFromService.Price,
+                    Description = prodFromService.Description,
+                    CountAvailable = prodFromService.CountAvailable,
+                    Category = prodFromService.Category
+
+                };
+                products.Add(serviceProduct);
+
+            }
+            return View(products);
             
         }
 
@@ -52,7 +70,7 @@ namespace ElectronicsStoreMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,Description,CountAvailable,Category")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Price,Description,CountAvailable,Category")]Models.Product product)
         {
             if (ModelState.IsValid)
             {
@@ -66,12 +84,10 @@ namespace ElectronicsStoreMVC.Controllers
                     Category = product.Category
                     
                 };
+                AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
+               service.AddProduct(serviceProduct);
 
                 
-                using (var service = new AdminReference.AdminServicesSoapClient())
-                {
-                    service.AddProduct(serviceProduct);
-                }
                 return RedirectToAction("Index");
             }
 
@@ -102,7 +118,7 @@ namespace ElectronicsStoreMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Price,Description,CountAvailable,Category")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Price,Description,CountAvailable,Category")]Models.Product product)
         {
             if (ModelState.IsValid)
             {
@@ -149,7 +165,7 @@ namespace ElectronicsStoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Product.Find(id);
+            Models.Product product = db.Product.Find(id);
             db.Product.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
