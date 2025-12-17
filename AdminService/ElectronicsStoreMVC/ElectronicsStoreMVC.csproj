@@ -139,6 +139,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\FAQsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -243,9 +244,6 @@
     <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.LogInResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.ServiceResponseOfBoolean.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -333,6 +331,7 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

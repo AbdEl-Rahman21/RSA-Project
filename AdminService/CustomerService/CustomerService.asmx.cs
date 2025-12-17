@@ -20,23 +20,25 @@ namespace CustomerService
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public ServiceResponse<bool> LogIn(string email, string password)
+        public ServiceResponse<Customer> LogIn(string email, string password)
         {
             var customer = dbContext.Customer.FirstOrDefault(c => c.Email == email && c.Password == password);
 
             if (customer == null)
             {
-                return new ServiceResponse<bool>
+                return new ServiceResponse<Customer>
                 {
                     Success = false,
-                    Message = "Invalid email or password"
+                    Message = "Invalid email or password",
+                    Data = customer
                 };
             }
 
-            return new ServiceResponse<bool>
+            return new ServiceResponse<Customer>
             {
                 Success = true,
-                Message = "Login successful"
+                Message = "Login successful",
+                Data = customer
             };
         }
 

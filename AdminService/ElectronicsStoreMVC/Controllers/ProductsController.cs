@@ -12,6 +12,7 @@ using ElectronicsStoreMVC.AdminReference;
 
 namespace ElectronicsStoreMVC.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         
@@ -59,6 +60,7 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -69,6 +71,7 @@ namespace ElectronicsStoreMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Name,Price,Description,CountAvailable,Category")]Models.Product product)
         {
             if (ModelState.IsValid)
@@ -94,6 +97,7 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -118,6 +122,7 @@ namespace ElectronicsStoreMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Name,Price,Description,CountAvailable,Category")]Models.Product product)
         {
             if (ModelState.IsValid)
@@ -144,6 +149,7 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -166,6 +172,7 @@ namespace ElectronicsStoreMVC.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();

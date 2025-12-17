@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace ElectronicsStoreMVC.Controllers
 {
+    [Authorize]
     public class FAQsController : Controller
     {
         
@@ -53,6 +54,7 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // GET: FAQs/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -62,6 +64,7 @@ namespace ElectronicsStoreMVC.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Question,Answer")] Models.FAQ fAQ)
         {
@@ -83,6 +86,7 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // GET: FAQs/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -104,6 +108,7 @@ namespace ElectronicsStoreMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Question,Answer")] Models.FAQ fAQ)
         {
             if (ModelState.IsValid)
@@ -123,6 +128,7 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // GET: FAQs/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -142,6 +148,7 @@ namespace ElectronicsStoreMVC.Controllers
         // POST: FAQs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
