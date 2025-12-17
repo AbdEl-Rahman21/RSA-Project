@@ -10,9 +10,9 @@ namespace ElectronicsStoreMVC.Controllers
     {
         public ActionResult Index()
         {
-             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
-            var allProducts = service.GetProducts();
-            return View(allProducts);
+            // AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
+            //var allProducts = service.GetProducts();
+            return View();
         }
 
         public ActionResult About()

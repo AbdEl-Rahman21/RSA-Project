@@ -1,0 +1,16 @@
+﻿using ElectronicsStoreMVC.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
+
+namespace CustomerService.DbContexts
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext() : base("name=DefaultConnection") { }
+
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<FAQ> FAQ { get; set; }
+    }
+}
