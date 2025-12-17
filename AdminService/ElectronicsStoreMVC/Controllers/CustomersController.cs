@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using ElectronicsStoreMVC.AdminReference;
+using ElectronicsStoreMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,19 +9,29 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CustomerService.DbContexts;
-using ElectronicsStoreMVC.Models;
+using System.Web.Services.Description;
+using ElectronicsStoreMVC.CustomerReference;
 
 namespace ElectronicsStoreMVC.Controllers
 {
     public class CustomersController : Controller
     {
-        private AppDbContext db = new AppDbContext();
+
 
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customer.ToList());
+            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+            CustomerReference.ServiceResponseOfListOfCustomer allCustomers = service.GetCustomers();
+            List<Models.Customer> customerList = new List<Models.Customer>();
+
+            foreach (CustomerReference.Customer custFromService in allCustomers.Data)
+            {
+                var serviceCustomer = new Models.Customer(custFromService);
+                customerList.Add(serviceCustomer);
+
+            }
+            return View(customerList);
         }
 
         // GET: Customers/Details/5
@@ -28,7 +41,13 @@ namespace ElectronicsStoreMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
+            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+            ServiceResponseOfCustomer serviceFaq = service.GetCustomer((int)id);
+           
+
+
+
+            var customer = new Models.Customer(serviceFaq);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -47,12 +66,22 @@ namespace ElectronicsStoreMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Username,Email,Password,PhoneNumber,Address")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,Username,Email,Password,PhoneNumber,Address")] Models.Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Customer.Add(customer);
-                db.SaveChanges();
+                var serviceCust = new CustomerReference.Customer
+                {
+                    Username = customer.Username,
+                    Email = customer.Email,
+                    Password = customer.Password,
+                    PhoneNumber = customer.PhoneNumber,
+                    Address = customer.Address
+                    
+
+                };
+                CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+                service.AddCustomer(serviceCust);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +95,9 @@ namespace ElectronicsStoreMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
+            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+            var serviceCust = service.GetCustomer((int)id);
+            var customer = new Models.Customer(serviceCust);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -79,12 +110,22 @@ namespace ElectronicsStoreMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Username,Email,Password,PhoneNumber,Address")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,Username,Email,Password,PhoneNumber,Address")] Models.Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();
+                var serviceCust = new CustomerReference.Customer
+                {
+                    Id = customer.Id,
+                    Username = customer.Username,
+                    Email = customer.Email,
+                    Password = customer.Password,
+                    PhoneNumber = customer.PhoneNumber,
+                    Address = customer.Address
+
+                };
+                CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+                service.EditCustomer(serviceCust);
                 return RedirectToAction("Index");
             }
             return View(customer);
@@ -97,7 +138,9 @@ namespace ElectronicsStoreMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customer.Find(id);
+            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+            var serviceCust = service.GetCustomer((int)id);
+            var customer = new Models.Customer(serviceCust);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -110,19 +153,12 @@ namespace ElectronicsStoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customer.Find(id);
-            db.Customer.Remove(customer);
-            db.SaveChanges();
+            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+
+            service.DeleteCustomer(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

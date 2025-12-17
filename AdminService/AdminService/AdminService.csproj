@@ -83,6 +83,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DbContexts\AppDbContext.cs" />
+    <Compile Include="Migrations\202512171658472_InitialCreate.cs" />
+    <Compile Include="Migrations\202512171658472_InitialCreate.Designer.cs">
+      <DependentUpon>202512171658472_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202512172012129_ModelUpdates.cs" />
+    <Compile Include="Migrations\202512172012129_ModelUpdates.Designer.cs">
+      <DependentUpon>202512172012129_ModelUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\FAQ.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -100,7 +109,14 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202512171658472_InitialCreate.resx">
+      <DependentUpon>202512171658472_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202512172012129_ModelUpdates.resx">
+      <DependentUpon>202512172012129_ModelUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

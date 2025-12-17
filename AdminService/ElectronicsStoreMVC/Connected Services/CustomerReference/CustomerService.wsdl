@@ -30,6 +30,133 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerResult" type="tns:ServiceResponseOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceResponseOfCustomer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Customer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Orders" type="tns:ArrayOfOrder" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrder">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Order">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:Customer" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Product" type="tns:Product" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Product">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountAvailable" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Orders" type="tns:ArrayOfOrder" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCustomersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomersResult" type="tns:ServiceResponseOfListOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiceResponseOfListOfCustomer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfCustomer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Customer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddCustomerResult" type="tns:ServiceResponseOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Customer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EditCustomerResult" type="tns:ServiceResponseOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteCustomerResult" type="tns:ServiceResponseOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetOrder">
         <s:complexType>
           <s:sequence>
@@ -52,48 +179,12 @@
           <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfString" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Order">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ProductCount" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ProductPrice" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:Customer" />
-          <s:element minOccurs="1" maxOccurs="1" name="ProductId" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Product" type="tns:Product" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Customer">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Orders" type="tns:ArrayOfOrder" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfOrder">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Product">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CountAvailable" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Orders" type="tns:ArrayOfOrder" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetOrders">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetOrdersResponse">
         <s:complexType>
@@ -124,17 +215,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="EditOrder">
+      <s:element name="DeleteOrder">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="order" type="tns:Order" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="EditOrderResponse">
+      <s:element name="DeleteOrderResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="EditOrderResult" type="tns:ServiceResponseOfOrder" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteOrderResult" type="tns:ServiceResponseOfOrder" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -145,6 +236,36 @@
   </wsdl:message>
   <wsdl:message name="LogInSoapOut">
     <wsdl:part name="parameters" element="tns:LogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomers" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCustomer" />
+  </wsdl:message>
+  <wsdl:message name="AddCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:EditCustomer" />
+  </wsdl:message>
+  <wsdl:message name="EditCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:EditCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCustomer" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerResponse" />
   </wsdl:message>
   <wsdl:message name="GetOrderSoapIn">
     <wsdl:part name="parameters" element="tns:GetOrder" />
@@ -164,16 +285,36 @@
   <wsdl:message name="AddOrderSoapOut">
     <wsdl:part name="parameters" element="tns:AddOrderResponse" />
   </wsdl:message>
-  <wsdl:message name="EditOrderSoapIn">
-    <wsdl:part name="parameters" element="tns:EditOrder" />
+  <wsdl:message name="DeleteOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteOrder" />
   </wsdl:message>
-  <wsdl:message name="EditOrderSoapOut">
-    <wsdl:part name="parameters" element="tns:EditOrderResponse" />
+  <wsdl:message name="DeleteOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteOrderResponse" />
   </wsdl:message>
   <wsdl:portType name="CustomerServiceSoap">
     <wsdl:operation name="LogIn">
       <wsdl:input message="tns:LogInSoapIn" />
       <wsdl:output message="tns:LogInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input message="tns:GetCustomerSoapIn" />
+      <wsdl:output message="tns:GetCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomers">
+      <wsdl:input message="tns:GetCustomersSoapIn" />
+      <wsdl:output message="tns:GetCustomersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <wsdl:input message="tns:AddCustomerSoapIn" />
+      <wsdl:output message="tns:AddCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCustomer">
+      <wsdl:input message="tns:EditCustomerSoapIn" />
+      <wsdl:output message="tns:EditCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <wsdl:input message="tns:DeleteCustomerSoapIn" />
+      <wsdl:output message="tns:DeleteCustomerSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetOrder">
       <wsdl:input message="tns:GetOrderSoapIn" />
@@ -187,15 +328,60 @@
       <wsdl:input message="tns:AddOrderSoapIn" />
       <wsdl:output message="tns:AddOrderSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="EditOrder">
-      <wsdl:input message="tns:EditOrderSoapIn" />
-      <wsdl:output message="tns:EditOrderSoapOut" />
+    <wsdl:operation name="DeleteOrder">
+      <wsdl:input message="tns:DeleteOrderSoapIn" />
+      <wsdl:output message="tns:DeleteOrderSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CustomerServiceSoap" type="tns:CustomerServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="LogIn">
       <soap:operation soapAction="http://tempuri.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomers">
+      <soap:operation soapAction="http://tempuri.org/GetCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <soap:operation soapAction="http://tempuri.org/AddCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditCustomer">
+      <soap:operation soapAction="http://tempuri.org/EditCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <soap:operation soapAction="http://tempuri.org/DeleteCustomer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -230,8 +416,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="EditOrder">
-      <soap:operation soapAction="http://tempuri.org/EditOrder" style="document" />
+    <wsdl:operation name="DeleteOrder">
+      <soap:operation soapAction="http://tempuri.org/DeleteOrder" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -244,6 +430,51 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="LogIn">
       <soap12:operation soapAction="http://tempuri.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomers">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <soap12:operation soapAction="http://tempuri.org/AddCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditCustomer">
+      <soap12:operation soapAction="http://tempuri.org/EditCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCustomer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -278,8 +509,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="EditOrder">
-      <soap12:operation soapAction="http://tempuri.org/EditOrder" style="document" />
+    <wsdl:operation name="DeleteOrder">
+      <soap12:operation soapAction="http://tempuri.org/DeleteOrder" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

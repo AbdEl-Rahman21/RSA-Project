@@ -139,7 +139,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Context\AppDbContext.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\FAQsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -155,13 +154,29 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\AdminReference\AdminServices.disco" />
-    <None Include="Connected Services\AdminReference\configuration91.svcinfo" />
-    <None Include="Connected Services\AdminReference\configuration.svcinfo" />
+    <None Include="Connected Services\AdminReference\AdminServices.wsdl" />
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.AddFAQResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.AddProductResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.DeleteFAQResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.DeleteProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.EditFAQResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.EditProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.GetFAQResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.GetFAQsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.GetProductResponse.datasource">
@@ -176,12 +191,21 @@
     <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.ServiceResponseOfBoolean.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.ServiceResponseOfFAQ.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.ServiceResponseOfListOfFAQ.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.ServiceResponseOfListOfProduct.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\AdminReference\ElectronicsStoreMVC.AdminReference.ServiceResponseOfProduct.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\AdminReference\AdminServices.disco" />
+    <None Include="Connected Services\AdminReference\configuration91.svcinfo" />
+    <None Include="Connected Services\AdminReference\configuration.svcinfo" />
     <None Include="Connected Services\AdminReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -189,10 +213,25 @@
     <None Include="Connected Services\CustomerReference\CustomerService.disco" />
     <None Include="Connected Services\CustomerReference\configuration91.svcinfo" />
     <None Include="Connected Services\CustomerReference\configuration.svcinfo" />
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.AddCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.AddOrderResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.EditOrderResponse.datasource">
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.EditCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.GetCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.GetCustomersResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.GetOrderResponse.datasource">
@@ -205,6 +244,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.ServiceResponseOfBoolean.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfCustomer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\CustomerReference\ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfOrder.datasource">
@@ -242,7 +287,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Connected Services\AdminReference\AdminServices.wsdl" />
     <None Include="Connected Services\CustomerReference\CustomerService.wsdl" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />

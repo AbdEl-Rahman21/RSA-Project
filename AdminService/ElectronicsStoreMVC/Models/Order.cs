@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElectronicsStoreMVC.AdminReference;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ElectronicsStoreMVC.Models
@@ -25,5 +26,22 @@ namespace ElectronicsStoreMVC.Models
 
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
+
+        public Order(CustomerReference.Order serviceOrder)
+        {
+            Id = serviceOrder.Id;
+            Date = serviceOrder.Date;   
+            Status = serviceOrder.Status;
+            ProductCount = serviceOrder.ProductCount;
+            ProductPrice = serviceOrder.ProductPrice;
+            CustomerId = serviceOrder.CustomerId;
+            ProductId = serviceOrder.ProductId;
+        }
+
+        
+        public Order()
+        {
+
+        }
     }
 }

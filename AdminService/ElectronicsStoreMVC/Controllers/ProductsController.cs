@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CustomerService.DbContexts;
+
 using ElectronicsStoreMVC.Models;
 using ElectronicsStoreMVC.AdminReference;
 
@@ -14,7 +14,7 @@ namespace ElectronicsStoreMVC.Controllers
 {
     public class ProductsController : Controller
     {
-        private AppDbContext db = new AppDbContext();
+        
 
         // GET: Products
         public ActionResult Index()
@@ -25,16 +25,7 @@ namespace ElectronicsStoreMVC.Controllers
 
             foreach (AdminReference.Product prodFromService in allProducts.Data)
             {
-                var serviceProduct = new Models.Product
-                {
-                    Id= prodFromService.Id,
-                    Name = prodFromService.Name,
-                    Price = prodFromService.Price,
-                    Description = prodFromService.Description,
-                    CountAvailable = prodFromService.CountAvailable,
-                    Category = prodFromService.Category
-
-                };
+                var serviceProduct = new Models.Product(prodFromService);
                 products.Add(serviceProduct);
 
             }
@@ -52,21 +43,13 @@ namespace ElectronicsStoreMVC.Controllers
             
             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
             ServiceResponseOfProduct product = service.GetProduct((int)id);
-            
-            
-            
-                var serviceProduct = new Models.Product
-                {
-                    Id = product.Data.Id,
-                    Name = product.Data.Name,
-                    Price = product.Data.Price,
-                    Description = product.Data.Description,
-                    CountAvailable = product.Data.CountAvailable,
-                    Category = product.Data.Category
-                };
-               
 
-            
+
+
+            var serviceProduct = new Models.Product(product);
+
+
+
 
             if (product == null)
             {
@@ -120,15 +103,7 @@ namespace ElectronicsStoreMVC.Controllers
             
             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
             var product = service.GetProduct((int)id);
-            var serviceProduct = new Models.Product
-            {
-                Id = product.Data.Id,
-                Name = product.Data.Name,
-                Price = product.Data.Price,
-                Description = product.Data.Description,
-                CountAvailable = product.Data.CountAvailable,
-                Category = product.Data.Category
-            };
+            var serviceProduct = new Models.Product(product);
 
 
             if (product == null)
@@ -178,11 +153,14 @@ namespace ElectronicsStoreMVC.Controllers
             
             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
             var product = service.GetProduct((int)id);
+            var serviceProduct = new Models.Product(product);
+            
+
             if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(serviceProduct);
         }
 
         // POST: Products/Delete/5
@@ -190,19 +168,14 @@ namespace ElectronicsStoreMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Models.Product product = db.Product.Find(id);
-            db.Product.Remove(product);
-            db.SaveChanges();
+            AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
+           
+            service.DeleteProduct(id);
+            
+
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

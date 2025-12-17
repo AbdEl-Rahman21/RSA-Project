@@ -1,0 +1,8 @@
+﻿CREATE TABLE Notification (
+    Id INT IDENTITY(1, 1) PRIMARY KEY,
+    Customer_Id INT NOT NULL,
+    Message NVARCHAR(MAX) NOT NULL,
+    Created_At DATETIME NOT NULL DEFAULT GETDATE(),
+
+    FOREIGN KEY (Customer_Id) REFERENCES Customer(Id)
+);
