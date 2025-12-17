@@ -84,7 +84,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DbContexts\AppDbContext.cs" />
-    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\FAQ.cs" />
     <Compile Include="Models\Order.cs" />

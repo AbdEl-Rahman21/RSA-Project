@@ -21,8 +21,9 @@ namespace AdminService.Models
         [Required]
         public int CountAvailable { get; set; }
 
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Category { get; set; }
 
         public virtual List<Order> Orders { get; set; }
     }
