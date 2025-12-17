@@ -103,6 +103,19 @@ namespace CustomerService
             return DeleteEntity(dbContext.Order, o => o.Id == id);
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<List<Product>> SearchProducts(string keyword = null, string category = null, decimal? minPrice = null, decimal? maxPrice = null)
+        {
+            Expression<Func<Product, bool>> filter = p =>
+                (string.IsNullOrEmpty(keyword) || p.Name.Contains(keyword) || p.Description.Contains(keyword)) &&
+                (string.IsNullOrEmpty(category) || p.Category == category) &&
+                (!minPrice.HasValue || p.Price >= minPrice.Value) &&
+                (!maxPrice.HasValue || p.Price <= maxPrice.Value);
+
+            return GetAll(dbContext.Product, filter);
+        }
+
         private ServiceResponse<T> GetById<T>(DbSet<T> dbSet, int id) where T : class
         {
             try
