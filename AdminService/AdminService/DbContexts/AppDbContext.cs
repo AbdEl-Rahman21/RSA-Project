@@ -7,7 +7,7 @@ namespace AdminService.DbContexts
     {
         public AppDbContext() : base(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=RSA;Integrated Security=True") {
             Configuration.ProxyCreationEnabled = false;
-
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Customer> Customer { get; set; }

@@ -51,12 +51,28 @@ namespace ElectronicsStoreMVC.Controllers
             }
             
             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
-            var product = service.GetProduct((int)id);
+            ServiceResponseOfProduct product = service.GetProduct((int)id);
+            
+            
+            
+                var serviceProduct = new Models.Product
+                {
+                    Id = product.Data.Id,
+                    Name = product.Data.Name,
+                    Price = product.Data.Price,
+                    Description = product.Data.Description,
+                    CountAvailable = product.Data.CountAvailable,
+                    Category = product.Data.Category
+                };
+               
+
+            
+
             if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(serviceProduct);
         }
 
         // GET: Products/Create
@@ -104,13 +120,22 @@ namespace ElectronicsStoreMVC.Controllers
             
             AdminReference.AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
             var product = service.GetProduct((int)id);
+            var serviceProduct = new Models.Product
+            {
+                Id = product.Data.Id,
+                Name = product.Data.Name,
+                Price = product.Data.Price,
+                Description = product.Data.Description,
+                CountAvailable = product.Data.CountAvailable,
+                Category = product.Data.Category
+            };
 
-            
+
             if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(serviceProduct);
         }
 
         // POST: Products/Edit/5
@@ -125,6 +150,7 @@ namespace ElectronicsStoreMVC.Controllers
                 
                 var serviceProduct = new AdminReference.Product
                 {
+                    Id = product.Id,
                     Name = product.Name,
                     Price = product.Price,
                     Description = product.Description,
@@ -134,10 +160,9 @@ namespace ElectronicsStoreMVC.Controllers
                 };
 
 
-                using (var service = new AdminReference.AdminServicesSoapClient())
-                {
-                    service.EditProduct(serviceProduct);
-                }
+                AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
+                service.EditProduct(serviceProduct);
+
                 return RedirectToAction("Index");
             }
             return View(product);
