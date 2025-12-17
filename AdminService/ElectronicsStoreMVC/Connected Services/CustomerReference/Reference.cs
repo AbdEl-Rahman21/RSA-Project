@@ -113,9 +113,9 @@ namespace ElectronicsStoreMVC.CustomerReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfOrder", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfCustomer", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
-    public partial class ServiceResponseOfOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ServiceResponseOfCustomer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -126,7 +126,7 @@ namespace ElectronicsStoreMVC.CustomerReference {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ElectronicsStoreMVC.CustomerReference.Order DataField;
+        private ElectronicsStoreMVC.CustomerReference.Customer DataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ElectronicsStoreMVC.CustomerReference.ArrayOfString ErrorsField;
@@ -168,7 +168,7 @@ namespace ElectronicsStoreMVC.CustomerReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public ElectronicsStoreMVC.CustomerReference.Order Data {
+        public ElectronicsStoreMVC.CustomerReference.Customer Data {
             get {
                 return this.DataField;
             }
@@ -189,6 +189,146 @@ namespace ElectronicsStoreMVC.CustomerReference {
                 if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
                     this.ErrorsField = value;
                     this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.Order[] OrdersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string PhoneNumber {
+            get {
+                return this.PhoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
+                    this.PhoneNumberField = value;
+                    this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Address {
+            get {
+                return this.AddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public ElectronicsStoreMVC.CustomerReference.Order[] Orders {
+            get {
+                return this.OrdersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrdersField, value) != true)) {
+                    this.OrdersField = value;
+                    this.RaisePropertyChanged("Orders");
                 }
             }
         }
@@ -372,146 +512,6 @@ namespace ElectronicsStoreMVC.CustomerReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ElectronicsStoreMVC.CustomerReference.Order[] OrdersField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Username {
-            get {
-                return this.UsernameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
-                    this.UsernameField = value;
-                    this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string PhoneNumber {
-            get {
-                return this.PhoneNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneNumberField, value) != true)) {
-                    this.PhoneNumberField = value;
-                    this.RaisePropertyChanged("PhoneNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string Address {
-            get {
-                return this.AddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
-                    this.AddressField = value;
-                    this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public ElectronicsStoreMVC.CustomerReference.Order[] Orders {
-            get {
-                return this.OrdersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrdersField, value) != true)) {
-                    this.OrdersField = value;
-                    this.RaisePropertyChanged("Orders");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -650,6 +650,190 @@ namespace ElectronicsStoreMVC.CustomerReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfListOfCustomer", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ServiceResponseOfListOfCustomer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private bool SuccessField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.Customer[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.ArrayOfString ErrorsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ElectronicsStoreMVC.CustomerReference.Customer[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public ElectronicsStoreMVC.CustomerReference.ArrayOfString Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfOrder", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ServiceResponseOfOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private bool SuccessField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.Order DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.ArrayOfString ErrorsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ElectronicsStoreMVC.CustomerReference.Order Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public ElectronicsStoreMVC.CustomerReference.ArrayOfString Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfListOfOrder", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class ServiceResponseOfListOfOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -751,6 +935,41 @@ namespace ElectronicsStoreMVC.CustomerReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LogIn", ReplyAction="*")]
         System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.LogInResponse> LogInAsync(ElectronicsStoreMVC.CustomerReference.LogInRequest request);
         
+        // CODEGEN: Generating message contract since element name GetCustomerResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomer", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.GetCustomerResponse GetCustomer(ElectronicsStoreMVC.CustomerReference.GetCustomerRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomer", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetCustomerResponse> GetCustomerAsync(ElectronicsStoreMVC.CustomerReference.GetCustomerRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetCustomersResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomers", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.GetCustomersResponse GetCustomers(ElectronicsStoreMVC.CustomerReference.GetCustomersRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomers", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetCustomersResponse> GetCustomersAsync(ElectronicsStoreMVC.CustomerReference.GetCustomersRequest request);
+        
+        // CODEGEN: Generating message contract since element name customer from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddCustomer", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.AddCustomerResponse AddCustomer(ElectronicsStoreMVC.CustomerReference.AddCustomerRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddCustomer", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.AddCustomerResponse> AddCustomerAsync(ElectronicsStoreMVC.CustomerReference.AddCustomerRequest request);
+        
+        // CODEGEN: Generating message contract since element name customer from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditCustomer", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.EditCustomerResponse EditCustomer(ElectronicsStoreMVC.CustomerReference.EditCustomerRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditCustomer", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.EditCustomerResponse> EditCustomerAsync(ElectronicsStoreMVC.CustomerReference.EditCustomerRequest request);
+        
+        // CODEGEN: Generating message contract since element name DeleteCustomerResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteCustomer", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponse DeleteCustomer(ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteCustomer", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponse> DeleteCustomerAsync(ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest request);
+        
         // CODEGEN: Generating message contract since element name GetOrderResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetOrder", ReplyAction="*")]
         ElectronicsStoreMVC.CustomerReference.GetOrderResponse GetOrder(ElectronicsStoreMVC.CustomerReference.GetOrderRequest request);
@@ -772,12 +991,12 @@ namespace ElectronicsStoreMVC.CustomerReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddOrder", ReplyAction="*")]
         System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.AddOrderResponse> AddOrderAsync(ElectronicsStoreMVC.CustomerReference.AddOrderRequest request);
         
-        // CODEGEN: Generating message contract since element name order from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditOrder", ReplyAction="*")]
-        ElectronicsStoreMVC.CustomerReference.EditOrderResponse EditOrder(ElectronicsStoreMVC.CustomerReference.EditOrderRequest request);
+        // CODEGEN: Generating message contract since element name DeleteOrderResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteOrder", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse DeleteOrder(ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditOrder", ReplyAction="*")]
-        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.EditOrderResponse> EditOrderAsync(ElectronicsStoreMVC.CustomerReference.EditOrderRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteOrder", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse> DeleteOrderAsync(ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -849,6 +1068,339 @@ namespace ElectronicsStoreMVC.CustomerReference {
         
         public LogInResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfBoolean LogInResult) {
             this.LogInResult = LogInResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetCustomerRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetCustomer", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.GetCustomerRequestBody Body;
+        
+        public GetCustomerRequest() {
+        }
+        
+        public GetCustomerRequest(ElectronicsStoreMVC.CustomerReference.GetCustomerRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetCustomerRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
+        
+        public GetCustomerRequestBody() {
+        }
+        
+        public GetCustomerRequestBody(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetCustomerResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetCustomerResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.GetCustomerResponseBody Body;
+        
+        public GetCustomerResponse() {
+        }
+        
+        public GetCustomerResponse(ElectronicsStoreMVC.CustomerReference.GetCustomerResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetCustomerResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer GetCustomerResult;
+        
+        public GetCustomerResponseBody() {
+        }
+        
+        public GetCustomerResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer GetCustomerResult) {
+            this.GetCustomerResult = GetCustomerResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetCustomersRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetCustomers", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.GetCustomersRequestBody Body;
+        
+        public GetCustomersRequest() {
+        }
+        
+        public GetCustomersRequest(ElectronicsStoreMVC.CustomerReference.GetCustomersRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetCustomersRequestBody {
+        
+        public GetCustomersRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetCustomersResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetCustomersResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.GetCustomersResponseBody Body;
+        
+        public GetCustomersResponse() {
+        }
+        
+        public GetCustomersResponse(ElectronicsStoreMVC.CustomerReference.GetCustomersResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetCustomersResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfCustomer GetCustomersResult;
+        
+        public GetCustomersResponseBody() {
+        }
+        
+        public GetCustomersResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfCustomer GetCustomersResult) {
+            this.GetCustomersResult = GetCustomersResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AddCustomerRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddCustomer", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.AddCustomerRequestBody Body;
+        
+        public AddCustomerRequest() {
+        }
+        
+        public AddCustomerRequest(ElectronicsStoreMVC.CustomerReference.AddCustomerRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AddCustomerRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.Customer customer;
+        
+        public AddCustomerRequestBody() {
+        }
+        
+        public AddCustomerRequestBody(ElectronicsStoreMVC.CustomerReference.Customer customer) {
+            this.customer = customer;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AddCustomerResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddCustomerResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.AddCustomerResponseBody Body;
+        
+        public AddCustomerResponse() {
+        }
+        
+        public AddCustomerResponse(ElectronicsStoreMVC.CustomerReference.AddCustomerResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AddCustomerResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer AddCustomerResult;
+        
+        public AddCustomerResponseBody() {
+        }
+        
+        public AddCustomerResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer AddCustomerResult) {
+            this.AddCustomerResult = AddCustomerResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class EditCustomerRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditCustomer", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.EditCustomerRequestBody Body;
+        
+        public EditCustomerRequest() {
+        }
+        
+        public EditCustomerRequest(ElectronicsStoreMVC.CustomerReference.EditCustomerRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class EditCustomerRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.Customer customer;
+        
+        public EditCustomerRequestBody() {
+        }
+        
+        public EditCustomerRequestBody(ElectronicsStoreMVC.CustomerReference.Customer customer) {
+            this.customer = customer;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class EditCustomerResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditCustomerResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.EditCustomerResponseBody Body;
+        
+        public EditCustomerResponse() {
+        }
+        
+        public EditCustomerResponse(ElectronicsStoreMVC.CustomerReference.EditCustomerResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class EditCustomerResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer EditCustomerResult;
+        
+        public EditCustomerResponseBody() {
+        }
+        
+        public EditCustomerResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer EditCustomerResult) {
+            this.EditCustomerResult = EditCustomerResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DeleteCustomerRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteCustomer", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequestBody Body;
+        
+        public DeleteCustomerRequest() {
+        }
+        
+        public DeleteCustomerRequest(ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DeleteCustomerRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
+        
+        public DeleteCustomerRequestBody() {
+        }
+        
+        public DeleteCustomerRequestBody(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DeleteCustomerResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteCustomerResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponseBody Body;
+        
+        public DeleteCustomerResponse() {
+        }
+        
+        public DeleteCustomerResponse(ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DeleteCustomerResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer DeleteCustomerResult;
+        
+        public DeleteCustomerResponseBody() {
+        }
+        
+        public DeleteCustomerResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer DeleteCustomerResult) {
+            this.DeleteCustomerResult = DeleteCustomerResult;
         }
     }
     
@@ -940,10 +1492,17 @@ namespace ElectronicsStoreMVC.CustomerReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class GetOrdersRequestBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int customerId;
+        
         public GetOrdersRequestBody() {
+        }
+        
+        public GetOrdersRequestBody(int customerId) {
+            this.customerId = customerId;
         }
     }
     
@@ -1053,15 +1612,15 @@ namespace ElectronicsStoreMVC.CustomerReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class EditOrderRequest {
+    public partial class DeleteOrderRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditOrder", Namespace="http://tempuri.org/", Order=0)]
-        public ElectronicsStoreMVC.CustomerReference.EditOrderRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteOrder", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.DeleteOrderRequestBody Body;
         
-        public EditOrderRequest() {
+        public DeleteOrderRequest() {
         }
         
-        public EditOrderRequest(ElectronicsStoreMVC.CustomerReference.EditOrderRequestBody Body) {
+        public DeleteOrderRequest(ElectronicsStoreMVC.CustomerReference.DeleteOrderRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1070,16 +1629,16 @@ namespace ElectronicsStoreMVC.CustomerReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class EditOrderRequestBody {
+    public partial class DeleteOrderRequestBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ElectronicsStoreMVC.CustomerReference.Order order;
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
         
-        public EditOrderRequestBody() {
+        public DeleteOrderRequestBody() {
         }
         
-        public EditOrderRequestBody(ElectronicsStoreMVC.CustomerReference.Order order) {
-            this.order = order;
+        public DeleteOrderRequestBody(int id) {
+            this.id = id;
         }
     }
     
@@ -1087,15 +1646,15 @@ namespace ElectronicsStoreMVC.CustomerReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class EditOrderResponse {
+    public partial class DeleteOrderResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditOrderResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ElectronicsStoreMVC.CustomerReference.EditOrderResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteOrderResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.DeleteOrderResponseBody Body;
         
-        public EditOrderResponse() {
+        public DeleteOrderResponse() {
         }
         
-        public EditOrderResponse(ElectronicsStoreMVC.CustomerReference.EditOrderResponseBody Body) {
+        public DeleteOrderResponse(ElectronicsStoreMVC.CustomerReference.DeleteOrderResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1104,16 +1663,16 @@ namespace ElectronicsStoreMVC.CustomerReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class EditOrderResponseBody {
+    public partial class DeleteOrderResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfOrder EditOrderResult;
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfOrder DeleteOrderResult;
         
-        public EditOrderResponseBody() {
+        public DeleteOrderResponseBody() {
         }
         
-        public EditOrderResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfOrder EditOrderResult) {
-            this.EditOrderResult = EditOrderResult;
+        public DeleteOrderResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfOrder DeleteOrderResult) {
+            this.DeleteOrderResult = DeleteOrderResult;
         }
     }
     
@@ -1172,6 +1731,129 @@ namespace ElectronicsStoreMVC.CustomerReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.CustomerReference.GetCustomerResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.GetCustomer(ElectronicsStoreMVC.CustomerReference.GetCustomerRequest request) {
+            return base.Channel.GetCustomer(request);
+        }
+        
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer GetCustomer(int id) {
+            ElectronicsStoreMVC.CustomerReference.GetCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetCustomerRequestBody();
+            inValue.Body.id = id;
+            ElectronicsStoreMVC.CustomerReference.GetCustomerResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetCustomer(inValue);
+            return retVal.Body.GetCustomerResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetCustomerResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.GetCustomerAsync(ElectronicsStoreMVC.CustomerReference.GetCustomerRequest request) {
+            return base.Channel.GetCustomerAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetCustomerResponse> GetCustomerAsync(int id) {
+            ElectronicsStoreMVC.CustomerReference.GetCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetCustomerRequestBody();
+            inValue.Body.id = id;
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetCustomerAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.CustomerReference.GetCustomersResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.GetCustomers(ElectronicsStoreMVC.CustomerReference.GetCustomersRequest request) {
+            return base.Channel.GetCustomers(request);
+        }
+        
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfCustomer GetCustomers() {
+            ElectronicsStoreMVC.CustomerReference.GetCustomersRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetCustomersRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetCustomersRequestBody();
+            ElectronicsStoreMVC.CustomerReference.GetCustomersResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetCustomers(inValue);
+            return retVal.Body.GetCustomersResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetCustomersResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.GetCustomersAsync(ElectronicsStoreMVC.CustomerReference.GetCustomersRequest request) {
+            return base.Channel.GetCustomersAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetCustomersResponse> GetCustomersAsync() {
+            ElectronicsStoreMVC.CustomerReference.GetCustomersRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetCustomersRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetCustomersRequestBody();
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetCustomersAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.CustomerReference.AddCustomerResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.AddCustomer(ElectronicsStoreMVC.CustomerReference.AddCustomerRequest request) {
+            return base.Channel.AddCustomer(request);
+        }
+        
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer AddCustomer(ElectronicsStoreMVC.CustomerReference.Customer customer) {
+            ElectronicsStoreMVC.CustomerReference.AddCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.AddCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.AddCustomerRequestBody();
+            inValue.Body.customer = customer;
+            ElectronicsStoreMVC.CustomerReference.AddCustomerResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).AddCustomer(inValue);
+            return retVal.Body.AddCustomerResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.AddCustomerResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.AddCustomerAsync(ElectronicsStoreMVC.CustomerReference.AddCustomerRequest request) {
+            return base.Channel.AddCustomerAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.AddCustomerResponse> AddCustomerAsync(ElectronicsStoreMVC.CustomerReference.Customer customer) {
+            ElectronicsStoreMVC.CustomerReference.AddCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.AddCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.AddCustomerRequestBody();
+            inValue.Body.customer = customer;
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).AddCustomerAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.CustomerReference.EditCustomerResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.EditCustomer(ElectronicsStoreMVC.CustomerReference.EditCustomerRequest request) {
+            return base.Channel.EditCustomer(request);
+        }
+        
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer EditCustomer(ElectronicsStoreMVC.CustomerReference.Customer customer) {
+            ElectronicsStoreMVC.CustomerReference.EditCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.EditCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.EditCustomerRequestBody();
+            inValue.Body.customer = customer;
+            ElectronicsStoreMVC.CustomerReference.EditCustomerResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).EditCustomer(inValue);
+            return retVal.Body.EditCustomerResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.EditCustomerResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.EditCustomerAsync(ElectronicsStoreMVC.CustomerReference.EditCustomerRequest request) {
+            return base.Channel.EditCustomerAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.EditCustomerResponse> EditCustomerAsync(ElectronicsStoreMVC.CustomerReference.Customer customer) {
+            ElectronicsStoreMVC.CustomerReference.EditCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.EditCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.EditCustomerRequestBody();
+            inValue.Body.customer = customer;
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).EditCustomerAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.DeleteCustomer(ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest request) {
+            return base.Channel.DeleteCustomer(request);
+        }
+        
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer DeleteCustomer(int id) {
+            ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequestBody();
+            inValue.Body.id = id;
+            ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).DeleteCustomer(inValue);
+            return retVal.Body.DeleteCustomerResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.DeleteCustomerAsync(ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest request) {
+            return base.Channel.DeleteCustomerAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.DeleteCustomerResponse> DeleteCustomerAsync(int id) {
+            ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest inValue = new ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.DeleteCustomerRequestBody();
+            inValue.Body.id = id;
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).DeleteCustomerAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         ElectronicsStoreMVC.CustomerReference.GetOrderResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.GetOrder(ElectronicsStoreMVC.CustomerReference.GetOrderRequest request) {
             return base.Channel.GetOrder(request);
         }
@@ -1201,9 +1883,10 @@ namespace ElectronicsStoreMVC.CustomerReference {
             return base.Channel.GetOrders(request);
         }
         
-        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfOrder GetOrders() {
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfOrder GetOrders(int customerId) {
             ElectronicsStoreMVC.CustomerReference.GetOrdersRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetOrdersRequest();
             inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetOrdersRequestBody();
+            inValue.Body.customerId = customerId;
             ElectronicsStoreMVC.CustomerReference.GetOrdersResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetOrders(inValue);
             return retVal.Body.GetOrdersResult;
         }
@@ -1213,9 +1896,10 @@ namespace ElectronicsStoreMVC.CustomerReference {
             return base.Channel.GetOrdersAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetOrdersResponse> GetOrdersAsync() {
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetOrdersResponse> GetOrdersAsync(int customerId) {
             ElectronicsStoreMVC.CustomerReference.GetOrdersRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetOrdersRequest();
             inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetOrdersRequestBody();
+            inValue.Body.customerId = customerId;
             return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetOrdersAsync(inValue);
         }
         
@@ -1245,28 +1929,28 @@ namespace ElectronicsStoreMVC.CustomerReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ElectronicsStoreMVC.CustomerReference.EditOrderResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.EditOrder(ElectronicsStoreMVC.CustomerReference.EditOrderRequest request) {
-            return base.Channel.EditOrder(request);
+        ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.DeleteOrder(ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest request) {
+            return base.Channel.DeleteOrder(request);
         }
         
-        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfOrder EditOrder(ElectronicsStoreMVC.CustomerReference.Order order) {
-            ElectronicsStoreMVC.CustomerReference.EditOrderRequest inValue = new ElectronicsStoreMVC.CustomerReference.EditOrderRequest();
-            inValue.Body = new ElectronicsStoreMVC.CustomerReference.EditOrderRequestBody();
-            inValue.Body.order = order;
-            ElectronicsStoreMVC.CustomerReference.EditOrderResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).EditOrder(inValue);
-            return retVal.Body.EditOrderResult;
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfOrder DeleteOrder(int id) {
+            ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest inValue = new ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.DeleteOrderRequestBody();
+            inValue.Body.id = id;
+            ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).DeleteOrder(inValue);
+            return retVal.Body.DeleteOrderResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.EditOrderResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.EditOrderAsync(ElectronicsStoreMVC.CustomerReference.EditOrderRequest request) {
-            return base.Channel.EditOrderAsync(request);
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.DeleteOrderAsync(ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest request) {
+            return base.Channel.DeleteOrderAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.EditOrderResponse> EditOrderAsync(ElectronicsStoreMVC.CustomerReference.Order order) {
-            ElectronicsStoreMVC.CustomerReference.EditOrderRequest inValue = new ElectronicsStoreMVC.CustomerReference.EditOrderRequest();
-            inValue.Body = new ElectronicsStoreMVC.CustomerReference.EditOrderRequestBody();
-            inValue.Body.order = order;
-            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).EditOrderAsync(inValue);
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse> DeleteOrderAsync(int id) {
+            ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest inValue = new ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.DeleteOrderRequestBody();
+            inValue.Body.id = id;
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).DeleteOrderAsync(inValue);
         }
     }
 }

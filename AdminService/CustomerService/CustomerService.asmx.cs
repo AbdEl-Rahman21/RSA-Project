@@ -49,7 +49,7 @@ namespace CustomerService
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public ServiceResponse<List<Customer>> GetCustomer()
+        public ServiceResponse<List<Customer>> GetCustomers()
         {
             return GetAll(dbContext.Customer);
         }

@@ -26,5 +26,29 @@ namespace ElectronicsStoreMVC.Models
         public string Category { get; set; }
 
         public virtual List<Order> Orders { get; set; }
+
+        public Product(AdminReference.ServiceResponseOfProduct product)
+        {
+            Id = product.Data.Id;
+            Name = product.Data.Name;
+            Price = product.Data.Price;
+            Description = product.Data.Description;
+            CountAvailable = product.Data.CountAvailable;
+            Category = product.Data.Category;
+        }
+
+        public Product(AdminReference.Product product)
+        {
+            Id = product.Id;
+            Name = product.Name;
+            Price = product.Price;
+            Description = product.Description;
+            CountAvailable = product.CountAvailable;
+            Category = product.Category;
+        }
+        public Product()
+        {
+            
+        }
     }
 }
