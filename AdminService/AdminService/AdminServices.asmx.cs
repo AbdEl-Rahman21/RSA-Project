@@ -189,6 +189,13 @@ namespace AdminService
             };
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<List<Order>> GetOrders()
+        {
+            return GetAll(dbContext.Order);
+        }
+
         private ServiceResponse<T> GetById<T>(DbSet<T> dbSet, int id) where T : class
         {
             try
