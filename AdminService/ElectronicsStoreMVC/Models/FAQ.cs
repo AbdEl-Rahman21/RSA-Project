@@ -18,10 +18,8 @@ namespace ElectronicsStoreMVC.Models
             Question = serviceFaq.Data.Question;
             Answer = serviceFaq.Data.Answer;
         }
-        public FAQ()
-        {
-            
-        }
+
+        public FAQ() { }
 
         [Key]
         public int Id { get; set; }

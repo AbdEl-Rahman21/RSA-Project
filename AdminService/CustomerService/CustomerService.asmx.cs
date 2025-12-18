@@ -105,6 +105,13 @@ namespace CustomerService
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public ServiceResponse<List<Notification>> GetNotifications(int customerId)
+        {
+            return GetAll(dbContext.Notification, n => n.CustomerId == customerId);
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public ServiceResponse<List<Product>> SearchProducts(string keyword = null, string category = null, decimal? minPrice = null, decimal? maxPrice = null)
         {
             Expression<Func<Product, bool>> filter = p =>
