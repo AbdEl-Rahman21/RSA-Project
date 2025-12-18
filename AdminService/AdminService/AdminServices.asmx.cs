@@ -143,7 +143,10 @@ namespace AdminService
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public ServiceResponse<Order> ChangeOrderStatus(int orderId, string newStatus)
         {
-            var order = dbContext.Order.Find(orderId);
+            var order = dbContext.Order
+                .Include(o => o.Customer)
+                .SingleOrDefault(o => o.Id == orderId);
+
 
             if (order == null)
             {
