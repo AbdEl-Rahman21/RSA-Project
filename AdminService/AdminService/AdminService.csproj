@@ -81,13 +81,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DbContexts\AppDbContext.cs" />
-    <Compile Include="Migrations\202512171658472_InitialCreate.cs" />
-    <Compile Include="Migrations\202512171658472_InitialCreate.Designer.cs">
-      <DependentUpon>202512171658472_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202512172012129_ModelUpdates.cs" />
-    <Compile Include="Migrations\202512172012129_ModelUpdates.Designer.cs">
-      <DependentUpon>202512172012129_ModelUpdates.cs</DependentUpon>
+    <Compile Include="Migrations\202512180230248_InitialBaseline.cs" />
+    <Compile Include="Migrations\202512180230248_InitialBaseline.Designer.cs">
+      <DependentUpon>202512180230248_InitialBaseline.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -108,11 +104,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202512171658472_InitialCreate.resx">
-      <DependentUpon>202512171658472_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202512172012129_ModelUpdates.resx">
-      <DependentUpon>202512172012129_ModelUpdates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202512180230248_InitialBaseline.resx">
+      <DependentUpon>202512180230248_InitialBaseline.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

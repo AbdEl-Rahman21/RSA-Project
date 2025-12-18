@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "AdminService.DbContexts.AppDbContext";
         }
 
         protected override void Seed(AdminService.DbContexts.AppDbContext context)

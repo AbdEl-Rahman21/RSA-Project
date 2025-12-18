@@ -7,13 +7,13 @@ namespace AdminService.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class InitialBaseline : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialBaseline));
         
         string IMigrationMetadata.Id
         {
-            get { return "202512171658472_InitialCreate"; }
+            get { return "202512180230248_InitialBaseline"; }
         }
         
         string IMigrationMetadata.Source

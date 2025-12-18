@@ -38,7 +38,7 @@ namespace ElectronicsStoreMVC.Controllers
                 AdminServicesSoapClient adminService = new AdminServicesSoapClient();
                 var admin = adminService.LogIn(email, password); // You need this method in your Admin ASMX
 
-                if (admin != null)
+                if (admin.Success)
                 {
                     role = "Admin";
                     username = "Admin";
