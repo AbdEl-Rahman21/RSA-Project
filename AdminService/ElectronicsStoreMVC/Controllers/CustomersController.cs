@@ -5,6 +5,7 @@ using ElectronicsStoreMVC.CustomerReference;
 
 namespace ElectronicsStoreMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CustomersController : Controller
     {
         // GET: Customers

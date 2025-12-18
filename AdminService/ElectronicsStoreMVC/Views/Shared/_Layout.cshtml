@@ -22,7 +22,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Product", "Index", "Products", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("FAQs", "Index", "FAQs", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("My Orders", "Index", "Orders", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
                 </ul>
             </div>
         </div>

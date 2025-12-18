@@ -15,104 +15,6 @@ namespace ElectronicsStoreMVC.CustomerReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfBoolean", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class ServiceResponseOfBoolean : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private bool SuccessField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MessageField;
-        
-        private bool DataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ElectronicsStoreMVC.CustomerReference.ArrayOfString ErrorsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public bool Success {
-            get {
-                return this.SuccessField;
-            }
-            set {
-                if ((this.SuccessField.Equals(value) != true)) {
-                    this.SuccessField = value;
-                    this.RaisePropertyChanged("Success");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string Message {
-            get {
-                return this.MessageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
-                    this.MessageField = value;
-                    this.RaisePropertyChanged("Message");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public bool Data {
-            get {
-                return this.DataField;
-            }
-            set {
-                if ((this.DataField.Equals(value) != true)) {
-                    this.DataField = value;
-                    this.RaisePropertyChanged("Data");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public ElectronicsStoreMVC.CustomerReference.ArrayOfString Errors {
-            get {
-                return this.ErrorsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
-                    this.ErrorsField = value;
-                    this.RaisePropertyChanged("Errors");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
-    [System.SerializableAttribute()]
-    public class ArrayOfString : System.Collections.Generic.List<string> {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfCustomer", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class ServiceResponseOfCustomer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -341,6 +243,13 @@ namespace ElectronicsStoreMVC.CustomerReference {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1061,12 +970,12 @@ namespace ElectronicsStoreMVC.CustomerReference {
     public partial class LogInResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfBoolean LogInResult;
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer LogInResult;
         
         public LogInResponseBody() {
         }
         
-        public LogInResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfBoolean LogInResult) {
+        public LogInResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer LogInResult) {
             this.LogInResult = LogInResult;
         }
     }
@@ -1708,7 +1617,7 @@ namespace ElectronicsStoreMVC.CustomerReference {
             return base.Channel.LogIn(request);
         }
         
-        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfBoolean LogIn(string email, string password) {
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfCustomer LogIn(string email, string password) {
             ElectronicsStoreMVC.CustomerReference.LogInRequest inValue = new ElectronicsStoreMVC.CustomerReference.LogInRequest();
             inValue.Body = new ElectronicsStoreMVC.CustomerReference.LogInRequestBody();
             inValue.Body.email = email;
