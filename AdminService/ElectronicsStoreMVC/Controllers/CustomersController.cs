@@ -50,6 +50,7 @@ namespace ElectronicsStoreMVC.Controllers
         }
 
         // GET: Customers/Create
+        [AllowAnonymous]
         public ActionResult Create()
         {
             return View();
@@ -58,6 +59,7 @@ namespace ElectronicsStoreMVC.Controllers
         // POST: Customers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public ActionResult Create([Bind(Include = "Id,Username,Email,Password,PhoneNumber,Address")] Models.Customer customer)
         {
             if (ModelState.IsValid)

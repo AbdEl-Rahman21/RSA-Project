@@ -1,17 +1,45 @@
 ﻿@model IEnumerable<ElectronicsStoreMVC.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Product Catalog";
 }
 
-<h2>Index</h2>
+<h2>Product Catalog</h2>
 
 <p>
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     }
-    </p>
+</p>
+
+<div class="well" style="margin-bottom: 20px; padding: 15px; background-color: #f9f9f9; border: 1px solid #ddd;">
+    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <label>Keyword</label>
+                @Html.TextBox("keyword", ViewBag.Keyword as string, new { @class = "form-control", placeholder = "Name or Description" })
+            </div>
+            <div class="col-md-3">
+                <label>Category</label>
+                @Html.TextBox("category", ViewBag.Category as string, new { @class = "form-control", placeholder = "e.g. Laptops" })
+            </div>
+            <div class="col-md-2">
+                <label>Min Price</label>
+                @Html.TextBox("minPrice", ViewBag.MinPrice as string, new { @class = "form-control", type = "number", step = "0.01" })
+            </div>
+            <div class="col-md-2">
+                <label>Max Price</label>
+                @Html.TextBox("maxPrice", ViewBag.MaxPrice as string, new { @class = "form-control", type = "number", step = "0.01" })
+            </div>
+            <div class="col-md-2" style="margin-top: 25px;">
+                <button type="submit" class="btn btn-info">Search</button>
+                @Html.ActionLink("Reset", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    }
+</div>
 <table class="table">
     <tr>
         <th>
@@ -29,43 +57,44 @@
         <th>
             @Html.DisplayNameFor(model => model.Category)
         </th>
-        <th></th>
+        <th>Actions</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.Id })
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default btn-xs" })
 
-            @if (User.IsInRole("Customer"))
-            {
-                @Html.ActionLink("Order Product", "Create", "Orders",
-                    new { productId = item.Id },
-                    new { @class = "btn btn-success" })
-            }
+                @if (User.IsInRole("Customer"))
+                {
+                    @Html.ActionLink("Order", "Create", "Orders",
+                        new { productId = item.Id },
+                        new { @class = "btn btn-success btn-xs" })
+                }
 
-            @if (User.IsInRole("Admin"))
-            {
-                @: | @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                @: | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            }
-        </td>
-    </tr>
-}
+                @if (User.IsInRole("Admin"))
+                {
+                    @: | @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    @: | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
 
 </table>

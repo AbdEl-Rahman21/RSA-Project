@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ElectronicsStoreMVC.Models.Order>
 
 @{
-    ViewBag.Title = "My Orders";
+    ViewBag.Title = "Order History";
 }
 
-<h2>My Order History</h2>
+<h2>Order History</h2>
 
 <table class="table">
     <tr>
@@ -13,6 +13,11 @@
         <th>Qty</th>
         <th>Total Price</th>
         <th>Status</th>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <th>Actions</th>
+        }
     </tr>
 
     @foreach (var item in Model)
@@ -32,6 +37,13 @@
             <td>@item.ProductCount</td>
             <td>$@(item.ProductPrice * item.ProductCount)</td>
             <td>@item.Status</td>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit Status", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                </td>
+            }
         </tr>
     }
 </table>

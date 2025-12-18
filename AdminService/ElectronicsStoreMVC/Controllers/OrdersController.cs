@@ -24,34 +24,67 @@ namespace ElectronicsStoreMVC.Controllers
 
             
             int currentUserId = (int)Session["UserId"];
+            var myOrderList = new List<Models.Order>();
+            if (currentUserId > 0)
+            {
+                 var allOrders = service.GetOrders(currentUserId);
+                var allProducts = adminService.GetProducts();
+                List<Models.Order> orderList = new List<Models.Order>();
 
-            var allOrders = service.GetOrders(currentUserId);
-            var allProducts = adminService.GetProducts();
-            List<Models.Order> orderList = new List<Models.Order>();
-
-            var myOrderList = (from order in allOrders.Data
-                               where order.CustomerId == currentUserId
-                               join product in allProducts.Data
-                               on order.ProductId equals product.Id
-                               select new Models.Order
-                               {
-                                   // Map standard fields
-                                   Id = order.Id,
-                                   Date = order.Date,
-                                   Status = order.Status,
-                                   ProductCount = order.ProductCount,
-                                   ProductPrice = order.ProductPrice,
-                                   CustomerId = order.CustomerId,
-                                   ProductId = order.ProductId,
-
-                                   // KEY PART: We manually fill the 'Product' property here!
-                                   Product = new Models.Product
+                 myOrderList = (from order in allOrders.Data
+                                   where order.CustomerId == currentUserId
+                                   join product in allProducts.Data
+                                   on order.ProductId equals product.Id
+                                   select new Models.Order
                                    {
-                                       Name = product.Name,
-                                       // Map other product fields if you need them (like Category)
-                                       Category = product.Category
-                                   }
-                               }).ToList();
+                                       // Map standard fields
+                                       Id = order.Id,
+                                       Date = order.Date,
+                                       Status = order.Status,
+                                       ProductCount = order.ProductCount,
+                                       ProductPrice = order.ProductPrice,
+                                       CustomerId = order.CustomerId,
+                                       ProductId = order.ProductId,
+
+                                       // KEY PART: We manually fill the 'Product' property here!
+                                       Product = new Models.Product
+                                       {
+                                           Name = product.Name,
+                                           // Map other product fields if you need them (like Category)
+                                           Category = product.Category
+                                       }
+                                   }).ToList();
+            }
+            else {
+                var allOrders = adminService.GetOrders();
+                var allProducts = adminService.GetProducts();
+                List<Models.Order> orderList = new List<Models.Order>();
+
+                 myOrderList = (from order in allOrders.Data
+                                   
+                                   join product in allProducts.Data
+                                   on order.ProductId equals product.Id
+                                   select new Models.Order
+                                   {
+                                       // Map standard fields
+                                       Id = order.Id,
+                                       Date = order.Date,
+                                       Status = order.Status,
+                                       ProductCount = order.ProductCount,
+                                       ProductPrice = order.ProductPrice,
+                                       CustomerId = order.CustomerId,
+                                       ProductId = order.ProductId,
+
+                                       // KEY PART: We manually fill the 'Product' property here!
+                                       Product = new Models.Product
+                                       {
+                                           Name = product.Name,
+                                           // Map other product fields if you need them (like Category)
+                                           Category = product.Category
+                                       }
+                                   }).ToList();
+            }
+            
 
             
             return View(myOrderList);
@@ -153,52 +186,52 @@ namespace ElectronicsStoreMVC.Controllers
             return View(order);
         }
 
-        // GET: Orders/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
+        //GET: Orders/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-        //    CustomerServiceSoapClient service = new CustomerServiceSoapClient();
-        //    var serviceResponse = service.GetOrder((int)id);
+            CustomerServiceSoapClient service = new CustomerServiceSoapClient();
+            var serviceResponse = service.GetOrder((int)id);
 
-        //    if (serviceResponse.Data == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            if (serviceResponse.Data == null)
+            {
+                return HttpNotFound();
+            }
 
-        //    var order = new Models.Order(serviceResponse.Data);
-        //    return View(order);
-        //}
+            var order = new Models.Order(serviceResponse.Data);
+            return View(order);
+        }
 
-        // POST: Orders/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,Date,Status,ProductCount,ProductPrice,CustomerId,ProductId")] Models.Order order)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var serviceOrder = new CustomerReference.Order
-        //        {
-        //            Id = order.Id,
-        //            Date = order.Date,
-        //            Status = order.Status,
-        //            ProductCount = order.ProductCount,
-        //            ProductPrice = order.ProductPrice,
-        //            CustomerId = order.CustomerId,
-        //            ProductId = order.ProductId
-        //        };
+        //POST: Orders/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Date,Status,ProductCount,ProductPrice,CustomerId,ProductId")] Models.Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                var serviceOrder = new CustomerReference.Order
+                {
+                    Id = order.Id,
+                    Date = order.Date,
+                    Status = order.Status,
+                    ProductCount = order.ProductCount,
+                    ProductPrice = order.ProductPrice,
+                    CustomerId = order.CustomerId,
+                    ProductId = order.ProductId
+                };
 
 
-        //        CustomerServiceSoapClient service = new CustomerServiceSoapClient();
-        //        service.EditOrder(serviceOrder);
+                AdminServicesSoapClient service = new AdminServicesSoapClient();
+                service.ChangeOrderStatus(serviceOrder.Id, serviceOrder.Status);
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(order);
-        //}
+                return RedirectToAction("Index");
+            }
+            return View(order);
+        }
 
         // GET: Orders/Delete/5
         public ActionResult Delete(int? id)

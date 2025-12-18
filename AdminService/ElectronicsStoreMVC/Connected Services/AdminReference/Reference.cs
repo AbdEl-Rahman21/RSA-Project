@@ -1000,6 +1000,190 @@ namespace ElectronicsStoreMVC.AdminReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfOrder", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ServiceResponseOfOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private bool SuccessField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.AdminReference.Order DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.AdminReference.ArrayOfString ErrorsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ElectronicsStoreMVC.AdminReference.Order Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public ElectronicsStoreMVC.AdminReference.ArrayOfString Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfListOfOrder", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ServiceResponseOfListOfOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private bool SuccessField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.AdminReference.Order[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.AdminReference.ArrayOfString ErrorsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ElectronicsStoreMVC.AdminReference.Order[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public ElectronicsStoreMVC.AdminReference.ArrayOfString Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AdminReference.AdminServicesSoap")]
     public interface AdminServicesSoap {
@@ -1080,6 +1264,20 @@ namespace ElectronicsStoreMVC.AdminReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteFAQ", ReplyAction="*")]
         System.Threading.Tasks.Task<ElectronicsStoreMVC.AdminReference.DeleteFAQResponse> DeleteFAQAsync(ElectronicsStoreMVC.AdminReference.DeleteFAQRequest request);
+        
+        // CODEGEN: Generating message contract since element name newStatus from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ChangeOrderStatus", ReplyAction="*")]
+        ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponse ChangeOrderStatus(ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ChangeOrderStatus", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponse> ChangeOrderStatusAsync(ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetOrdersResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetOrders", ReplyAction="*")]
+        ElectronicsStoreMVC.AdminReference.GetOrdersResponse GetOrders(ElectronicsStoreMVC.AdminReference.GetOrdersRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetOrders", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.AdminReference.GetOrdersResponse> GetOrdersAsync(ElectronicsStoreMVC.AdminReference.GetOrdersRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1820,6 +2018,139 @@ namespace ElectronicsStoreMVC.AdminReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ChangeOrderStatusRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ChangeOrderStatus", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequestBody Body;
+        
+        public ChangeOrderStatusRequest() {
+        }
+        
+        public ChangeOrderStatusRequest(ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ChangeOrderStatusRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int orderId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string newStatus;
+        
+        public ChangeOrderStatusRequestBody() {
+        }
+        
+        public ChangeOrderStatusRequestBody(int orderId, string newStatus) {
+            this.orderId = orderId;
+            this.newStatus = newStatus;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ChangeOrderStatusResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ChangeOrderStatusResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponseBody Body;
+        
+        public ChangeOrderStatusResponse() {
+        }
+        
+        public ChangeOrderStatusResponse(ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ChangeOrderStatusResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.AdminReference.ServiceResponseOfOrder ChangeOrderStatusResult;
+        
+        public ChangeOrderStatusResponseBody() {
+        }
+        
+        public ChangeOrderStatusResponseBody(ElectronicsStoreMVC.AdminReference.ServiceResponseOfOrder ChangeOrderStatusResult) {
+            this.ChangeOrderStatusResult = ChangeOrderStatusResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetOrdersRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetOrders", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.AdminReference.GetOrdersRequestBody Body;
+        
+        public GetOrdersRequest() {
+        }
+        
+        public GetOrdersRequest(ElectronicsStoreMVC.AdminReference.GetOrdersRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetOrdersRequestBody {
+        
+        public GetOrdersRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetOrdersResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetOrdersResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.AdminReference.GetOrdersResponseBody Body;
+        
+        public GetOrdersResponse() {
+        }
+        
+        public GetOrdersResponse(ElectronicsStoreMVC.AdminReference.GetOrdersResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetOrdersResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.AdminReference.ServiceResponseOfListOfOrder GetOrdersResult;
+        
+        public GetOrdersResponseBody() {
+        }
+        
+        public GetOrdersResponseBody(ElectronicsStoreMVC.AdminReference.ServiceResponseOfListOfOrder GetOrdersResult) {
+            this.GetOrdersResult = GetOrdersResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface AdminServicesSoapChannel : ElectronicsStoreMVC.AdminReference.AdminServicesSoap, System.ServiceModel.IClientChannel {
     }
@@ -2118,6 +2449,56 @@ namespace ElectronicsStoreMVC.AdminReference {
             inValue.Body = new ElectronicsStoreMVC.AdminReference.DeleteFAQRequestBody();
             inValue.Body.id = id;
             return ((ElectronicsStoreMVC.AdminReference.AdminServicesSoap)(this)).DeleteFAQAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponse ElectronicsStoreMVC.AdminReference.AdminServicesSoap.ChangeOrderStatus(ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest request) {
+            return base.Channel.ChangeOrderStatus(request);
+        }
+        
+        public ElectronicsStoreMVC.AdminReference.ServiceResponseOfOrder ChangeOrderStatus(int orderId, string newStatus) {
+            ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest inValue = new ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest();
+            inValue.Body = new ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequestBody();
+            inValue.Body.orderId = orderId;
+            inValue.Body.newStatus = newStatus;
+            ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponse retVal = ((ElectronicsStoreMVC.AdminReference.AdminServicesSoap)(this)).ChangeOrderStatus(inValue);
+            return retVal.Body.ChangeOrderStatusResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponse> ElectronicsStoreMVC.AdminReference.AdminServicesSoap.ChangeOrderStatusAsync(ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest request) {
+            return base.Channel.ChangeOrderStatusAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.AdminReference.ChangeOrderStatusResponse> ChangeOrderStatusAsync(int orderId, string newStatus) {
+            ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest inValue = new ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequest();
+            inValue.Body = new ElectronicsStoreMVC.AdminReference.ChangeOrderStatusRequestBody();
+            inValue.Body.orderId = orderId;
+            inValue.Body.newStatus = newStatus;
+            return ((ElectronicsStoreMVC.AdminReference.AdminServicesSoap)(this)).ChangeOrderStatusAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.AdminReference.GetOrdersResponse ElectronicsStoreMVC.AdminReference.AdminServicesSoap.GetOrders(ElectronicsStoreMVC.AdminReference.GetOrdersRequest request) {
+            return base.Channel.GetOrders(request);
+        }
+        
+        public ElectronicsStoreMVC.AdminReference.ServiceResponseOfListOfOrder GetOrders() {
+            ElectronicsStoreMVC.AdminReference.GetOrdersRequest inValue = new ElectronicsStoreMVC.AdminReference.GetOrdersRequest();
+            inValue.Body = new ElectronicsStoreMVC.AdminReference.GetOrdersRequestBody();
+            ElectronicsStoreMVC.AdminReference.GetOrdersResponse retVal = ((ElectronicsStoreMVC.AdminReference.AdminServicesSoap)(this)).GetOrders(inValue);
+            return retVal.Body.GetOrdersResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.AdminReference.GetOrdersResponse> ElectronicsStoreMVC.AdminReference.AdminServicesSoap.GetOrdersAsync(ElectronicsStoreMVC.AdminReference.GetOrdersRequest request) {
+            return base.Channel.GetOrdersAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.AdminReference.GetOrdersResponse> GetOrdersAsync() {
+            ElectronicsStoreMVC.AdminReference.GetOrdersRequest inValue = new ElectronicsStoreMVC.AdminReference.GetOrdersRequest();
+            inValue.Body = new ElectronicsStoreMVC.AdminReference.GetOrdersRequestBody();
+            return ((ElectronicsStoreMVC.AdminReference.AdminServicesSoap)(this)).GetOrdersAsync(inValue);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ElectronicsStoreMVC.Controllers
            CustomerReference.CustomerServiceSoapClient custService = new CustomerServiceSoapClient();
             var customer = custService.LogIn(email, password); // You need this method in your ASMX
 
-            if (customer != null)
+            if (customer.Data != null)
             {
                 role = "Customer";
                 username = customer.Data.Username;

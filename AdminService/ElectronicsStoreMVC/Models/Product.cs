@@ -46,6 +46,16 @@ namespace ElectronicsStoreMVC.Models
             CountAvailable = product.CountAvailable;
             Category = product.Category;
         }
+
+        public Product(CustomerReference.Product product)
+        {
+            Id = product.Id;
+            Name = product.Name;
+            Price = product.Price;
+            Description = product.Description;
+            CountAvailable = product.CountAvailable;
+            Category = product.Category;
+        }
         public Product()
         {
             

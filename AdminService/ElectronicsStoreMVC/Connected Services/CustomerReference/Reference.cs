@@ -833,6 +833,296 @@ namespace ElectronicsStoreMVC.CustomerReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfListOfNotification", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ServiceResponseOfListOfNotification : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private bool SuccessField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.Notification[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.ArrayOfString ErrorsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ElectronicsStoreMVC.CustomerReference.Notification[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public ElectronicsStoreMVC.CustomerReference.ArrayOfString Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Notification", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Notification : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        private System.DateTime CreatedAtField;
+        
+        private int CustomerIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.Customer CustomerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.DateTime CreatedAt {
+            get {
+                return this.CreatedAtField;
+            }
+            set {
+                if ((this.CreatedAtField.Equals(value) != true)) {
+                    this.CreatedAtField = value;
+                    this.RaisePropertyChanged("CreatedAt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int CustomerId {
+            get {
+                return this.CustomerIdField;
+            }
+            set {
+                if ((this.CustomerIdField.Equals(value) != true)) {
+                    this.CustomerIdField = value;
+                    this.RaisePropertyChanged("CustomerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public ElectronicsStoreMVC.CustomerReference.Customer Customer {
+            get {
+                return this.CustomerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerField, value) != true)) {
+                    this.CustomerField = value;
+                    this.RaisePropertyChanged("Customer");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceResponseOfListOfProduct", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ServiceResponseOfListOfProduct : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private bool SuccessField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.Product[] DataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ElectronicsStoreMVC.CustomerReference.ArrayOfString ErrorsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public bool Success {
+            get {
+                return this.SuccessField;
+            }
+            set {
+                if ((this.SuccessField.Equals(value) != true)) {
+                    this.SuccessField = value;
+                    this.RaisePropertyChanged("Success");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public ElectronicsStoreMVC.CustomerReference.Product[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public ElectronicsStoreMVC.CustomerReference.ArrayOfString Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CustomerReference.CustomerServiceSoap")]
     public interface CustomerServiceSoap {
@@ -906,6 +1196,20 @@ namespace ElectronicsStoreMVC.CustomerReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteOrder", ReplyAction="*")]
         System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.DeleteOrderResponse> DeleteOrderAsync(ElectronicsStoreMVC.CustomerReference.DeleteOrderRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetNotificationsResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNotifications", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.GetNotificationsResponse GetNotifications(ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNotifications", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetNotificationsResponse> GetNotificationsAsync(ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest request);
+        
+        // CODEGEN: Generating message contract since element name keyword from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchProducts", ReplyAction="*")]
+        ElectronicsStoreMVC.CustomerReference.SearchProductsResponse SearchProducts(ElectronicsStoreMVC.CustomerReference.SearchProductsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchProducts", ReplyAction="*")]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.SearchProductsResponse> SearchProductsAsync(ElectronicsStoreMVC.CustomerReference.SearchProductsRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1585,6 +1889,154 @@ namespace ElectronicsStoreMVC.CustomerReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetNotificationsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetNotifications", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.GetNotificationsRequestBody Body;
+        
+        public GetNotificationsRequest() {
+        }
+        
+        public GetNotificationsRequest(ElectronicsStoreMVC.CustomerReference.GetNotificationsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetNotificationsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int customerId;
+        
+        public GetNotificationsRequestBody() {
+        }
+        
+        public GetNotificationsRequestBody(int customerId) {
+            this.customerId = customerId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetNotificationsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetNotificationsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.GetNotificationsResponseBody Body;
+        
+        public GetNotificationsResponse() {
+        }
+        
+        public GetNotificationsResponse(ElectronicsStoreMVC.CustomerReference.GetNotificationsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetNotificationsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfNotification GetNotificationsResult;
+        
+        public GetNotificationsResponseBody() {
+        }
+        
+        public GetNotificationsResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfNotification GetNotificationsResult) {
+            this.GetNotificationsResult = GetNotificationsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchProductsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchProducts", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.SearchProductsRequestBody Body;
+        
+        public SearchProductsRequest() {
+        }
+        
+        public SearchProductsRequest(ElectronicsStoreMVC.CustomerReference.SearchProductsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchProductsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string keyword;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string category;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<decimal> minPrice;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<decimal> maxPrice;
+        
+        public SearchProductsRequestBody() {
+        }
+        
+        public SearchProductsRequestBody(string keyword, string category, System.Nullable<decimal> minPrice, System.Nullable<decimal> maxPrice) {
+            this.keyword = keyword;
+            this.category = category;
+            this.minPrice = minPrice;
+            this.maxPrice = maxPrice;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchProductsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchProductsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.SearchProductsResponseBody Body;
+        
+        public SearchProductsResponse() {
+        }
+        
+        public SearchProductsResponse(ElectronicsStoreMVC.CustomerReference.SearchProductsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchProductsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfProduct SearchProductsResult;
+        
+        public SearchProductsResponseBody() {
+        }
+        
+        public SearchProductsResponseBody(ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfProduct SearchProductsResult) {
+            this.SearchProductsResult = SearchProductsResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CustomerServiceSoapChannel : ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -1860,6 +2312,62 @@ namespace ElectronicsStoreMVC.CustomerReference {
             inValue.Body = new ElectronicsStoreMVC.CustomerReference.DeleteOrderRequestBody();
             inValue.Body.id = id;
             return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).DeleteOrderAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.CustomerReference.GetNotificationsResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.GetNotifications(ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest request) {
+            return base.Channel.GetNotifications(request);
+        }
+        
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfNotification GetNotifications(int customerId) {
+            ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetNotificationsRequestBody();
+            inValue.Body.customerId = customerId;
+            ElectronicsStoreMVC.CustomerReference.GetNotificationsResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetNotifications(inValue);
+            return retVal.Body.GetNotificationsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetNotificationsResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.GetNotificationsAsync(ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest request) {
+            return base.Channel.GetNotificationsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.GetNotificationsResponse> GetNotificationsAsync(int customerId) {
+            ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest inValue = new ElectronicsStoreMVC.CustomerReference.GetNotificationsRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.GetNotificationsRequestBody();
+            inValue.Body.customerId = customerId;
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).GetNotificationsAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ElectronicsStoreMVC.CustomerReference.SearchProductsResponse ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.SearchProducts(ElectronicsStoreMVC.CustomerReference.SearchProductsRequest request) {
+            return base.Channel.SearchProducts(request);
+        }
+        
+        public ElectronicsStoreMVC.CustomerReference.ServiceResponseOfListOfProduct SearchProducts(string keyword, string category, System.Nullable<decimal> minPrice, System.Nullable<decimal> maxPrice) {
+            ElectronicsStoreMVC.CustomerReference.SearchProductsRequest inValue = new ElectronicsStoreMVC.CustomerReference.SearchProductsRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.SearchProductsRequestBody();
+            inValue.Body.keyword = keyword;
+            inValue.Body.category = category;
+            inValue.Body.minPrice = minPrice;
+            inValue.Body.maxPrice = maxPrice;
+            ElectronicsStoreMVC.CustomerReference.SearchProductsResponse retVal = ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).SearchProducts(inValue);
+            return retVal.Body.SearchProductsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.SearchProductsResponse> ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap.SearchProductsAsync(ElectronicsStoreMVC.CustomerReference.SearchProductsRequest request) {
+            return base.Channel.SearchProductsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ElectronicsStoreMVC.CustomerReference.SearchProductsResponse> SearchProductsAsync(string keyword, string category, System.Nullable<decimal> minPrice, System.Nullable<decimal> maxPrice) {
+            ElectronicsStoreMVC.CustomerReference.SearchProductsRequest inValue = new ElectronicsStoreMVC.CustomerReference.SearchProductsRequest();
+            inValue.Body = new ElectronicsStoreMVC.CustomerReference.SearchProductsRequestBody();
+            inValue.Body.keyword = keyword;
+            inValue.Body.category = category;
+            inValue.Body.minPrice = minPrice;
+            inValue.Body.maxPrice = maxPrice;
+            return ((ElectronicsStoreMVC.CustomerReference.CustomerServiceSoap)(this)).SearchProductsAsync(inValue);
         }
     }
 }

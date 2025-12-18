@@ -18,13 +18,17 @@ namespace ElectronicsStoreMVC.Controllers
         
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string keyword, string category, decimal? minPrice, decimal? maxPrice)
         {
-            AdminServicesSoapClient service = new AdminReference.AdminServicesSoapClient();
-            ServiceResponseOfListOfProduct allProducts = service.GetProducts();
+            ViewBag.Keyword = keyword;
+            ViewBag.Category = category;
+            ViewBag.MinPrice = minPrice;
+            ViewBag.MaxPrice = maxPrice;
+            CustomerReference.CustomerServiceSoapClient service = new CustomerReference.CustomerServiceSoapClient();
+            CustomerReference.ServiceResponseOfListOfProduct allProducts = service.SearchProducts(keyword,category,minPrice,maxPrice);
             List<Models.Product> products = new List<Models.Product>();
 
-            foreach (AdminReference.Product prodFromService in allProducts.Data)
+            foreach (CustomerReference.Product prodFromService in allProducts.Data)
             {
                 var serviceProduct = new Models.Product(prodFromService);
                 products.Add(serviceProduct);
